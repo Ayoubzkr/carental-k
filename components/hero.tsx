@@ -8,25 +8,25 @@ import { motion, AnimatePresence } from "framer-motion"
 const heroSlides = [
   {
     image: "/images/cars/mercedes-class-a-white.jpg",
-    title: "Expérience",
-    highlight: "Luxe",
-    subtitle: "en Mouvement",
+    title: "L'Expérience",
+    highlight: "du Luxe",
+    subtitle: "",
     description:
-      "Location de voitures premium et services de lavage automobile professionnels qui redéfinissent l'excellence et l'exclusivité",
+      "Location de voitures haut de gamme et services de lavage premium pour une expérience vraiment exclusive.",
   },
   {
     image: "/images/cars/tiguan-black.jpg",
-    title: "Conduisez",
+    title: "Ressentez",
     highlight: "l'Excellence",
-    subtitle: "Aujourd'hui",
-    description: "Découvrez notre collection exclusive de véhicules haut de gamme avec un service personnalisé",
+    subtitle: "",
+    description: "Découvrez notre collection de véhicules haut de gamme accompagnés d’un service entièrement personnalisé.",
   },
   {
     image: "/images/cars/porsche-macan-black.jpg",
     title: "Votre",
     highlight: "Destination",
-    subtitle: "de Luxe",
-    description: "Des services premium qui allient élégance, confort et performance pour une expérience inoubliable",
+    subtitle: "Premium",
+    description: "Élégance, confort et performance réunis pour une expérience inoubliable.",
   },
 ]
 
@@ -75,7 +75,7 @@ export function Hero() {
             className="inline-block mb-6 px-4 py-2 border border-primary/30 rounded-full"
           >
             <span className="text-sm font-mono uppercase tracking-wider text-primary">
-              Services Automobiles Premium
+              Services Automobiles de Prestige
             </span>
           </motion.div>
 
@@ -132,6 +132,12 @@ export function Hero() {
               size="lg"
               variant="outline"
               className="border-primary text-primary hover:bg-primary hover:text-primary-foreground text-lg px-8 py-6 bg-transparent"
+              onClick={() => {
+                const catalogSection = document.getElementById('catalog')
+                if (catalogSection) {
+                  catalogSection.scrollIntoView({ behavior: 'smooth' })
+                }
+              }}
             >
               Voir la Flotte
             </Button>
@@ -142,9 +148,8 @@ export function Hero() {
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index === currentSlide ? "bg-primary w-8" : "bg-primary/30"
-                }`}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentSlide ? "bg-primary w-8" : "bg-primary/30"
+                  }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
             ))}
@@ -159,18 +164,18 @@ export function Hero() {
           >
             <div className="bg-card/50 backdrop-blur-sm border border-border rounded-lg p-6 hover:border-primary/40 transition-colors">
               <Shield className="h-8 w-8 text-primary mx-auto mb-3" />
-              <h3 className="font-mono text-sm uppercase tracking-wider mb-2">Service de Confiance</h3>
-              <p className="text-sm text-foreground/60">Fiable et sécurisé</p>
+              <h3 className="font-mono text-sm uppercase tracking-wider mb-2">Service Fiable</h3>
+              <p className="text-sm text-foreground/60">Sécurité et transparence garanties</p>
             </div>
             <div className="bg-card/50 backdrop-blur-sm border border-border rounded-lg p-6 hover:border-primary/40 transition-colors">
               <Award className="h-8 w-8 text-primary mx-auto mb-3" />
-              <h3 className="font-mono text-sm uppercase tracking-wider mb-2">Qualité Premium</h3>
-              <p className="text-sm text-foreground/60">Excellence garantie</p>
+              <h3 className="font-mono text-sm uppercase tracking-wider mb-2">Qualité Supérieure</h3>
+              <p className="text-sm text-foreground/60">Standards haut de gamme</p>
             </div>
             <div className="bg-card/50 backdrop-blur-sm border border-border rounded-lg p-6 hover:border-primary/40 transition-colors">
               <div className="text-3xl mx-auto mb-3">⭐</div>
-              <h3 className="font-mono text-sm uppercase tracking-wider mb-2">5 Étoiles</h3>
-              <p className="text-sm text-foreground/60">Approuvé par les clients</p>
+              <h3 className="font-mono text-sm uppercase tracking-wider mb-2">Satisfaction 5★</h3>
+              <p className="text-sm text-foreground/60">Recommandé par nos clients</p>
             </div>
           </motion.div>
         </div>

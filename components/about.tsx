@@ -2,11 +2,11 @@ import { CheckCircle } from "lucide-react"
 
 export function About() {
   const features = [
-    "Plus de 10 ans d'excellence",
-    "Flotte premium de véhicules de luxe",
-    "Services de lavage automobile professionnels",
-    "Satisfaction client garantie",
-    "Support et assistance 24/7",
+    "Plus de 10 ans d’expertise au service du luxe",
+    "Flotte haut de gamme soigneusement sélectionnée",
+    "Services de lavage et detailing premium",
+    "Excellence du service et satisfaction client",
+    "Support et assistance dédiés 24/7",
   ]
 
   return (
@@ -18,17 +18,14 @@ export function About() {
               <span className="text-xs font-mono uppercase tracking-wider text-primary">À Propos de K-Rim Car</span>
             </div>
 
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">Où le Luxe Rencontre l'Excellence</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">L’Art du Luxe, Maîtrisé à la Perfection</h2>
 
             <p className="text-lg text-foreground/70 mb-6 leading-relaxed">
-              K-Rim Car est votre destination premium pour la location de voitures de luxe et les services de lavage
-              automobile professionnels. Nous combinons des années d'expertise avec une passion pour l'excellence
-              automobile pour offrir des expériences incomparables.
+              K-Rim Car est votre référence dans la location de voitures haut de gamme et les services de detailing professionnel. Nous mettons à votre disposition une expertise affirmée et une véritable culture de l’excellence pour offrir des prestations d’un niveau supérieur.
             </p>
 
             <p className="text-lg text-foreground/70 mb-8 leading-relaxed">
-              Notre engagement envers la qualité, l'attention aux détails et la satisfaction client a fait de nous le
-              choix de confiance pour les clients exigeants qui n'attendent rien d'autre que le meilleur.
+              Notre engagement pour la qualité, le souci du détail et l’écoute du client a fait de K-Rim Car un partenaire de confiance pour une clientèle exigeante, à la recherche d’un service réellement irréprochable.
             </p>
 
             <div className="space-y-3">

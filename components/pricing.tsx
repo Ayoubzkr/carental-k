@@ -8,35 +8,40 @@ export function Pricing() {
   const washPackages = [
     {
       name: "Lavage Express",
-      description: "Nettoyage extérieur rapide",
+      description: "Nettoyage extérieur efficace, idéal pour redonner de l’éclat en quelques minutes.",
       price: 100,
-      features: ["Lavage extérieur à la main", "Brillance des pneus", "Nettoyage des vitres", "Séchage rapide"],
+      features: [
+        "Lavage extérieur manuel haute qualité",
+        "Nettoyage des vitres extérieures",
+        "Brillance pneus professionnelle",
+        "Séchage rapide & sans traces",
+      ],
     },
     {
       name: "Detailing Premium",
-      description: "Complet intérieur et extérieur",
+      description: "Un nettoyage complet intérieur + extérieur, réalisé avec une précision professionnelle.",
       price: 250,
       popular: true,
       features: [
         "Lavage extérieur complet",
-        "Aspiration intérieure",
-        "Nettoyage tableau de bord",
-        "Nettoyage des vitres",
-        "Brillance des pneus",
-        "Application de cire",
+        "Aspiration intérieure profonde",
+        "Nettoyage tableau de bord & surfaces",
+        "Vitres intérieures & extérieures",
+        "Brillance pneus premium",
+        "Application de cire protectrice",
       ],
     },
     {
       name: "Package Luxe",
-      description: "Traitement de soin ultime",
+      description: "Le traitement de detailing le plus complet pour une finition showroom.",
       price: 450,
       features: [
-        "Tout du Premium inclus",
-        "Traitement clay bar",
-        "Correction de peinture",
-        "Revêtement céramique",
-        "Conditionnement du cuir",
-        "Nettoyage du compartiment moteur",
+        "Tous les services du pack Premium inclus",
+        "Traitement clay bar professionnel",
+        "Correction légère de micro-rayures",
+        "Protection céramique haute durabilité",
+        "Nettoyage & soin du cuir",
+        "Nettoyage compartiment moteur",
       ],
     },
   ]
@@ -51,11 +56,11 @@ export function Pricing() {
           </div>
 
           <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-6 text-white text-balance">
-            Services de Lavage Premium
+            Forfaits de Lavage et Detailing Haut de Gamme
           </h2>
 
           <p className="text-lg text-white/60 text-balance">
-            Des forfaits de nettoyage et de detailing adaptés à l'excellence de votre véhicule
+            Des prestations conçues pour sublimer et protéger votre véhicule d’exception.
           </p>
         </div>
 
@@ -67,13 +72,13 @@ export function Pricing() {
                 <Card
                   key={pkg.name}
                   className={`relative border transition-all duration-300 hover:-translate-y-2 group ${pkg.popular
-                      ? "border-[#D4AF37]/50 bg-black"
-                      : "border-white/10 bg-black/50"
+                    ? "border-[#D4AF37]/50 bg-black"
+                    : "border-white/10 bg-black/50"
                     }`}
                 >
                   {pkg.popular && (
                     <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#D4AF37] text-black px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider border border-black">
-                      Populaire
+                      CHOIX N°1
                     </div>
                   )}
 
@@ -98,11 +103,11 @@ export function Pricing() {
 
                     <Button
                       className={`w-full py-6 text-base font-semibold group-hover:bg-[#D4AF37] group-hover:text-black transition-all ${pkg.popular
-                          ? "bg-[#D4AF37]/20 text-[#D4AF37] border border-[#D4AF37]/50"
-                          : "bg-white/5 text-white border border-white/10"
+                        ? "bg-[#D4AF37]/20 text-[#D4AF37] border border-[#D4AF37]/50"
+                        : "bg-white/5 text-white border border-white/10"
                         }`}
                     >
-                      Réserver
+                      Réserver Maintenant
                     </Button>
                   </CardContent>
                 </Card>

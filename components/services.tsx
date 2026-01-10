@@ -9,28 +9,30 @@ export function Services() {
       icon: Car,
       title: "Location de Voitures de Luxe",
       description:
-        "Choisissez parmi notre flotte exclusive de véhicules premium. Parfait pour les voyages d'affaires, les occasions spéciales, ou simplement pour vivre l'expérience du luxe.",
+        "Explorez notre flotte haut de gamme soigneusement sélectionnée. Idéale pour les déplacements professionnels, les événements prestigieux ou simplement pour profiter du plaisir de conduire un véhicule d’exception.",
       features: [
-        "Large sélection de voitures de luxe",
-        "Périodes de location flexibles",
-        "Assurance complète",
-        "Livraison et récupération gratuites",
+        "Flotte de véhicules premium soigneusement sélectionnés",
+        "Options de location flexibles (court & long terme)",
+        "Assurance complète incluse",
+        "Service de livraison et récupération offertes",
       ],
-      image: "/luxury-car-dashboard.jpeg",
+      image: "/location-voiture-luxe-tanger-krim-car.jpg",
+      alt: "Location de voiture de luxe à Tanger – KRIM CAR",
     },
     {
       id: "wash",
       icon: Sparkles,
       title: "Lavage Automobile Professionnel",
       description:
-        "Services de nettoyage et de detailing experts qui maintiennent votre véhicule comme neuf. Utilisant des produits et techniques premium.",
+        "Un service de lavage et de detailing professionnel conçu pour préserver l’éclat, la valeur et l’élégance de votre véhicule, avec des produits haut de gamme et des techniques expertes.",
       features: [
-        "Detailing intérieur et extérieur",
-        "Protection de peinture",
-        "Produits de nettoyage premium",
-        "Délai de traitement rapide",
+        "Detailing intérieur & extérieur haut de gamme",
+        "Traitements avancés de protection carrosserie",
+        "Produits professionnels de qualité supérieure",
+        "Service rapide et réalisé par des experts",
       ],
-      image: "/professional-car-wash-luxury-vehicle-being-cleaned.jpeg",
+      image: "/lavage-auto-tanger-luxe-krim-car.jpg",
+      alt: "Lavage automobile professionnel à Tanger – KRIM CAR",
     },
   ]
 
@@ -42,10 +44,10 @@ export function Services() {
             <span className="text-xs font-mono uppercase tracking-wider text-primary">Nos Services</span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">Services Premium Adaptés Pour Vous</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">Des Services d’Excellence Pensés Pour Vous</h2>
 
           <p className="text-lg text-foreground/70 text-balance">
-            Découvrez le mélange parfait de luxe et de professionnalisme avec nos services automobiles complets
+            Découvrez l’alliance parfaite du luxe, du professionnalisme et d’un service haut de gamme.
           </p>
         </div>
 
@@ -74,7 +76,15 @@ export function Services() {
                       ))}
                     </div>
 
-                    <Button className="bg-primary text-primary-foreground hover:bg-primary/90">En Savoir Plus</Button>
+                    <Button
+                      onClick={() => {
+                        const targetId = service.id === 'wash' ? 'pricing' : 'catalog'
+                        document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' })
+                      }}
+                      className="bg-primary text-primary-foreground hover:bg-primary/90"
+                    >
+                      En Savoir Plus
+                    </Button>
                   </CardContent>
                 </Card>
               </div>
@@ -83,7 +93,7 @@ export function Services() {
                 <div className="relative h-[400px] rounded-lg overflow-hidden border border-primary/20">
                   <img
                     src={service.image || "/placeholder.svg"}
-                    alt={service.title}
+                    alt={service.alt || service.title}
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -98,7 +108,7 @@ export function Services() {
             <CardContent className="p-6 text-center">
               <Shield className="h-8 w-8 text-primary mx-auto mb-3" />
               <div className="text-2xl font-bold text-primary mb-1">100%</div>
-              <div className="text-sm text-foreground/60 font-mono uppercase tracking-wider">Assuré</div>
+              <div className="text-sm text-foreground/60 font-mono uppercase tracking-wider">Sécurisé</div>
             </CardContent>
           </Card>
 
@@ -106,7 +116,7 @@ export function Services() {
             <CardContent className="p-6 text-center">
               <Clock className="h-8 w-8 text-primary mx-auto mb-3" />
               <div className="text-2xl font-bold text-primary mb-1">24/7</div>
-              <div className="text-sm text-foreground/60 font-mono uppercase tracking-wider">Support</div>
+              <div className="text-sm text-foreground/60 font-mono uppercase tracking-wider">Support Dédié</div>
             </CardContent>
           </Card>
 
@@ -114,7 +124,7 @@ export function Services() {
             <CardContent className="p-6 text-center">
               <Car className="h-8 w-8 text-primary mx-auto mb-3" />
               <div className="text-2xl font-bold text-primary mb-1">50+</div>
-              <div className="text-sm text-foreground/60 font-mono uppercase tracking-wider">Véhicules</div>
+              <div className="text-sm text-foreground/60 font-mono uppercase tracking-wider">Véhicules Premium</div>
             </CardContent>
           </Card>
 

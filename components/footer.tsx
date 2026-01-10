@@ -1,30 +1,9 @@
+
 import Image from "next/image"
 import Link from "next/link"
-import { Instagram } from "lucide-react"
+import { Instagram, ChevronRight } from "lucide-react"
 
 export function Footer() {
-  const footerLinks = {
-    services: [
-      { name: "Location de Voitures", href: "#rental" },
-      { name: "Lavage Auto", href: "#wash" },
-      { name: "Notre Flotte", href: "#catalog" },
-      { name: "Tarifs", href: "#pricing" },
-    ],
-    company: [
-      { name: "À Propos", href: "#about" },
-      { name: "Témoignages", href: "#testimonials" },
-      { name: "Contact", href: "#contact" },
-      { name: "Carrières", href: "#" },
-    ],
-    support: [
-      { name: "FAQ", href: "#" },
-      { name: "Conditions Générales", href: "#" },
-      { name: "Politique de Confidentialité", href: "#" },
-      { name: "Centre d'Assistance", href: "#" },
-    ],
-  }
-
-  // Snapchat Icon Component
   const SnapchatIcon = ({ className }: { className?: string }) => (
     <svg
       viewBox="0 0 24 24"
@@ -36,96 +15,143 @@ export function Footer() {
     </svg>
   )
 
-  const socialLinks = [
-    { icon: Instagram, href: "https://www.instagram.com/k_rimcar/?hl=fr", label: "Instagram" },
-    { icon: SnapchatIcon, href: "https://www.snapchat.com/add/K_rimcar", label: "Snapchat" },
-  ]
+  const links = {
+    services: [
+      { name: "Location de Voitures", href: "#rental" },
+      { name: "Lavage Auto", href: "#wash" },
+      { name: "Notre Flotte", href: "#catalog" },
+      { name: "Tarifs", href: "#pricing" },
+    ],
+    company: [
+      { name: "À Propos", href: "#about" },
+      { name: "Témoignages", href: "#testimonials" },
+      { name: "Contact", href: "#contact" },
+      { name: "Route de Malabata, Tanger", href: "https://maps.app.goo.gl/K1XK6GjvZgzkNQ8v9" },
+      { name: "Carrières", href: "#" },
+    ],
+    support: [
+      { name: "FAQ", href: "/faq" },
+      { name: "Conditions Générales", href: "/cgv" },
+      { name: "Politique de Confidentialité", href: "/privacy" },
+      { name: "Centre d'Assistance", href: "/contact" },
+    ]
+  }
 
   return (
-    <footer className="bg-secondary/30 border-t border-border">
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+    <footer className="relative bg-[#050505] pt-20 pb-10 overflow-hidden">
+      {/* Golden Top Border Effect */}
+      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent opacity-50"></div>
+
+      <div className="container mx-auto px-4">
+        <div className="grid lg:grid-cols-12 gap-12 mb-16">
+
           {/* Brand Column */}
-          <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-3 mb-4">
-              <Image
-                src="/images/k-rim-logo.jpg"
-                alt="K-Rim Car Logo"
-                width={50}
-                height={50}
-                className="rounded-full"
-              />
-              <span className="text-2xl font-bold text-primary">K-RIM CAR</span>
+          <div className="lg:col-span-4">
+            <Link href="/" className="flex items-center gap-4 mb-6 group">
+              <div className="relative w-16 h-16 rounded-full border border-[#D4AF37] p-1 group-hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all duration-500">
+                <Image
+                  src="/images/k-rim-logo.jpg"
+                  alt="K-Rim Car Logo"
+                  fill
+                  className="object-cover rounded-full"
+                />
+              </div>
+              <span className="text-3xl font-playfair font-bold text-[#D4AF37] tracking-wider">
+                K-RIM CAR
+              </span>
             </Link>
 
-            <p className="text-foreground/70 mb-6 leading-relaxed max-w-md">
-              Découvrez le summum de la location de voitures de luxe et des services de lavage automobile
-              professionnels. Où l'excellence rencontre l'exclusivité.
+            <p className="text-[#888] leading-relaxed mb-8 max-w-sm font-light">
+              Location de voitures premium & services de lavage automobile professionnels.
+              Excellence, luxe et transparence pour tous vos déplacements à Tanger.
             </p>
 
             <div className="flex gap-4">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-primary/10 hover:bg-primary p-2 rounded-full transition-colors group"
-                  aria-label={social.label}
-                >
-                  <social.icon className="h-5 w-5 text-primary group-hover:text-primary-foreground transition-colors" />
-                </a>
-              ))}
+              <a
+                href="https://www.instagram.com/k_rimcar/?hl=fr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-full border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition-all duration-300 group"
+                aria-label="Instagram"
+              >
+                <Instagram className="h-5 w-5" />
+              </a>
+              <a
+                href="https://www.snapchat.com/add/K_rimcar"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-full border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition-all duration-300 group"
+                aria-label="Snapchat"
+              >
+                <SnapchatIcon className="h-5 w-5" />
+              </a>
             </div>
           </div>
 
-          {/* Links Columns */}
-          <div>
-            <h4 className="font-bold mb-4 font-mono uppercase tracking-wider text-sm">Services</h4>
-            <ul className="space-y-2">
-              {footerLinks.services.map((link) => (
+          {/* Divider 1 */}
+          <div className="hidden lg:block lg:col-span-1 border-l border-[#D4AF37]/10 h-full mx-auto"></div>
+
+          {/* Services Column */}
+          <div className="lg:col-span-2">
+            <h4 className="text-[#D4AF37] font-playfair text-lg uppercase tracking-widest mb-8 border-b border-[#D4AF37]/20 pb-2 inline-block">
+              Services
+            </h4>
+            <ul className="space-y-4">
+              {links.services.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-foreground/70 hover:text-primary transition-colors">
-                    {link.name}
+                  <Link href={link.href} className="group flex items-center text-[#888] hover:text-[#D4AF37] transition-colors duration-300">
+                    <ChevronRight className="h-3 w-3 mr-2 text-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity transform -translate-x-2 group-hover:translate-x-0" />
+                    <span className="transform group-hover:translate-x-1 transition-transform duration-300">{link.name}</span>
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div>
-            <h4 className="font-bold mb-4 font-mono uppercase tracking-wider text-sm">Entreprise</h4>
-            <ul className="space-y-2">
-              {footerLinks.company.map((link) => (
+          {/* Entreprise Column */}
+          <div className="lg:col-span-2">
+            <h4 className="text-[#D4AF37] font-playfair text-lg uppercase tracking-widest mb-8 border-b border-[#D4AF37]/20 pb-2 inline-block">
+              Entreprise
+            </h4>
+            <ul className="space-y-4">
+              {links.company.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-foreground/70 hover:text-primary transition-colors">
-                    {link.name}
+                  <Link href={link.href} className="group flex items-center text-[#888] hover:text-[#D4AF37] transition-colors duration-300">
+                    <ChevronRight className="h-3 w-3 mr-2 text-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity transform -translate-x-2 group-hover:translate-x-0" />
+                    <span className="transform group-hover:translate-x-1 transition-transform duration-300">{link.name}</span>
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div>
-            <h4 className="font-bold mb-4 font-mono uppercase tracking-wider text-sm">Support</h4>
-            <ul className="space-y-2">
-              {footerLinks.support.map((link) => (
+          {/* Support Column */}
+          <div className="lg:col-span-3">
+            <h4 className="text-[#D4AF37] font-playfair text-lg uppercase tracking-widest mb-8 border-b border-[#D4AF37]/20 pb-2 inline-block">
+              Support
+            </h4>
+            <ul className="space-y-4">
+              {links.support.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-foreground/70 hover:text-primary transition-colors">
-                    {link.name}
+                  <Link href={link.href} className="group flex items-center text-[#888] hover:text-[#D4AF37] transition-colors duration-300">
+                    <ChevronRight className="h-3 w-3 mr-2 text-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity transform -translate-x-2 group-hover:translate-x-0" />
+                    <span className="transform group-hover:translate-x-1 transition-transform duration-300">{link.name}</span>
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
+
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-border">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-foreground/60 text-sm">© 2025 K-Rim Car. Tous droits réservés.</p>
-            <p className="text-foreground/60 text-sm">Conçu avec luxe et précision</p>
-          </div>
+        <div className="pt-8 border-t border-[#D4AF37]/10 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-[#666] text-sm tracking-wide">
+            © 2025 <span className="text-[#D4AF37]">K-RIM CAR</span> — Tous droits réservés.
+          </p>
+          <p className="text-[#666] text-sm tracking-wide font-playfair italic">
+            Conçu avec précision & luxe.
+          </p>
         </div>
       </div>
     </footer>

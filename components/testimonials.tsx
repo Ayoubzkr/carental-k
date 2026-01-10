@@ -69,7 +69,7 @@ export function Testimonials() {
   useEffect(() => {
     const timer = setInterval(() => {
       nextSlide()
-    }, 4000)
+    }, 6000)
     return () => clearInterval(timer)
   }, [currentIndex, itemsPerPage])
 
@@ -101,6 +101,37 @@ export function Testimonials() {
 
   return (
     <section id="testimonials" className="py-24 bg-[#050505] overflow-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            name: "K-Rim Car",
+            image: "/logo.png",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Tanger",
+              addressCountry: "MA"
+            },
+            telephone: "+212665123330",
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: "4.9",
+              reviewCount: 123
+            },
+            review: testimonials.map((t) => ({
+              "@type": "Review",
+              author: t.name,
+              reviewBody: t.text,
+              reviewRating: {
+                "@type": "Rating",
+                ratingValue: t.rating
+              }
+            }))
+          }),
+        }}
+      />
       <div className="container mx-auto px-4">
 
         {/* Header with Google Rating */}
@@ -118,9 +149,18 @@ export function Testimonials() {
             </span>
           </div>
 
+          <p className="text-white/40 text-xs mt-2 mb-8">
+            Avis vérifiés provenant de Google Maps
+          </p>
+
           <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-6 text-white text-balance">
             Nos Clients Témoignent
           </h2>
+
+          <p className="text-white/50 max-w-2xl mx-auto mt-4">
+            Découvrez les avis réels de nos clients au Maroc. K-Rim Car est noté 4.9/5 grâce à son service premium,
+            ses voitures neuves et sa livraison rapide à Tanger.
+          </p>
         </div>
 
         {/* Carousel */}
@@ -178,6 +218,16 @@ export function Testimonials() {
               ))}
             </AnimatePresence>
           </div>
+        </div>
+
+        <div className="text-center mt-10">
+          <a
+            href="https://wa.me/212665123330"
+            target="_blank"
+            className="inline-block bg-[#D4AF37] text-black px-8 py-4 rounded-full font-semibold hover:bg-[#b0912d] transition-all"
+          >
+            Réserver maintenant via WhatsApp 📲
+          </a>
         </div>
 
       </div>

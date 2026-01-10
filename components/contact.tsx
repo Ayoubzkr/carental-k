@@ -19,13 +19,65 @@ export function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    const message = `Nouveau contact:\nNom: ${formData.name}\nEmail: ${formData.email}\nTéléphone: ${formData.phone}\nService: ${formData.service}\nMessage: ${formData.message}`
+
+    if (!/^[0-9]{8,10}$/.test(formData.phone)) {
+      alert("Veuillez entrer un numéro marocain valide.")
+      return
+    }
+
+    const message = `
+📩 *Nouveau Message - Formulaire Contact K-Rim Car*
+
+👤 *Nom*: ${formData.name}
+📧 *Email*: ${formData.email}
+📞 *Téléphone*: +212 ${formData.phone}
+
+🔧 *Service demandé*: ${formData.service}
+💬 *Message*:
+${formData.message}
+
+Envoyé depuis le site web K-Rim Car.
+`
     const whatsappUrl = `https://wa.me/212665123330?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, "_blank")
   }
 
   return (
-    <section id="contact" className="py-24 bg-[#050505]">
+
+    <section id="contact" className="py-24 bg-[#050505]" aria-label="Contact K-Rim Car">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            name: "K-Rim Car",
+            image: "https://krimcar.com/logo.png",
+            "@id": "https://krimcar.com",
+            url: "https://krimcar.com/contact",
+            telephone: "+212665123330",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "Route de Malabata",
+              addressLocality: "Tanger",
+              addressCountry: "MA"
+            },
+            openingHours: [
+              "Mo-Fr 09:00-19:00",
+              "Sa 10:00-14:00"
+            ],
+            geo: {
+              "@type": "GeoCoordinates",
+              latitude: 35.774,
+              longitude: -5.795
+            },
+            sameAs: [
+              "https://www.facebook.com/krimcar",
+              "https://www.instagram.com/krimcar"
+            ]
+          }),
+        }}
+      />
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <div className="inline-block mb-4 px-6 py-2 border border-[#D4AF37]/30 rounded-full bg-[#D4AF37]/5">
@@ -35,6 +87,12 @@ export function Contact() {
           <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-6 text-white text-balance">
             Contactez-Nous Aujourd'hui
           </h2>
+
+          <p className="text-white/50 mt-4 max-w-2xl mx-auto">
+            Contactez K-Rim Car, votre agence de location de voitures premium à Tanger.
+            Nous proposons un service rapide, fiable et disponible pour livraison à l’aéroport,
+            gare Tanger Ville, hôtels et Malabata.
+          </p>
 
           <p className="text-lg text-white/60 text-balance leading-relaxed">
             Vous avez des questions? Nous sommes là pour vous aider. Contactez-nous et discutons de la façon dont nous pouvons vous servir.
@@ -56,6 +114,7 @@ export function Contact() {
                   className="bg-[#111] border-white/10 text-white placeholder:text-white/20 h-12 focus:border-[#D4AF37] transition-colors"
                   placeholder="Entrez votre nom complet"
                   required
+                  aria-required="true"
                 />
               </div>
 
@@ -68,6 +127,7 @@ export function Contact() {
                   className="bg-[#111] border-white/10 text-white placeholder:text-white/20 h-12 focus:border-[#D4AF37] transition-colors"
                   placeholder="exemple@email.com"
                   required
+                  aria-required="true"
                 />
               </div>
 
@@ -84,6 +144,7 @@ export function Contact() {
                     className="bg-transparent border-none text-white placeholder:text-white/20 h-12 focus-visible:ring-0"
                     placeholder="6 XX XX XX XX"
                     required
+                    aria-required="true"
                   />
                 </div>
               </div>
@@ -112,12 +173,22 @@ export function Contact() {
                   className="bg-[#111] border-white/10 text-white placeholder:text-white/20 min-h-[150px] focus:border-[#D4AF37] resize-none p-4"
                   placeholder="Parlez-nous de vos besoins..."
                   required
+                  aria-required="true"
                 />
               </div>
 
               <Button type="submit" className="w-full bg-[#D4AF37] text-black hover:bg-[#b0912d] font-bold text-lg h-14 mt-4 tracking-wide uppercase">
                 Envoyer le Message
               </Button>
+
+              <a
+                href="https://wa.me/212665123330"
+                target="_blank"
+                className="block text-center w-full mt-3 bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
+                rel="noreferrer"
+              >
+                Contacter sur WhatsApp
+              </a>
             </form>
           </div>
 
@@ -148,6 +219,7 @@ export function Contact() {
               {/* Map Embed */}
               <div className="w-full h-[300px] rounded-lg overflow-hidden border border-[#D4AF37]/20 relative group mb-8">
                 <iframe
+                  title="Carte K-Rim Car Tanger"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1000!2d-5.795!3d35.774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd0b800645069fd1%3A0xc64d42065844bca1!2sK-RIM%20CAR!5e0!3m2!1sen!2sma!4v1714150000000"
                   width="100%"
                   height="100%"
