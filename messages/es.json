@@ -1,0 +1,308 @@
+{
+    "metadata": {
+        "title": "K-Rim Car | Alquiler de Coches de Lujo y Servicios Profesionales de Lavado de Coches",
+        "description": "Descubra el alquiler de coches de lujo y los servicios profesionales de lavado de coches con K-Rim Car. Vehículos premium, servicio excepcional y calidad inigualable.",
+        "keywords": "alquiler coches lujo, lavado coches premium, servicios alquiler coches, lavado coches profesional, coches lujo Marruecos, K-Rim Car Tánger"
+    },
+    "nav": {
+        "home": "Inicio",
+        "vehicles": "Vehículos",
+        "services": "Servicios",
+        "about": "Acerca de",
+        "contact": "Contacto",
+        "pricing": "Precios"
+    },
+    "hero": {
+        "badge": "Servicios Automotrices de Prestigio",
+        "cta": "Reservar Ahora",
+        "ctaSecondary": "Ver Flota",
+        "slides": {
+            "0": {
+                "title": "La Experiencia",
+                "highlight": "del Lujo",
+                "subtitle": "",
+                "description": "Alquiler de coches de alta gama y servicios de lavado premium para una experiencia verdaderamente exclusiva."
+            },
+            "1": {
+                "title": "Sienta",
+                "highlight": "la Excelencia",
+                "subtitle": "",
+                "description": "Descubra nuestra colección de vehículos premium acompañados de un servicio totalmente personalizado."
+            },
+            "2": {
+                "title": "Su",
+                "highlight": "Destino",
+                "subtitle": "Premium",
+                "description": "Elegancia, confort y rendimiento reunidos para una experiencia inolvidable."
+            }
+        },
+        "features": {
+            "reliable": {
+                "title": "Servicio Fiable",
+                "desc": "Seguridad y transparencia garantizadas"
+            },
+            "quality": {
+                "title": "Calidad Superior",
+                "desc": "Estándares de primera clase"
+            },
+            "satisfaction": {
+                "title": "Satisfacción 5★",
+                "desc": "Recomendado por nuestros clientes"
+            }
+        }
+    },
+    "about": {
+        "badge": "Acerca de K-Rim Car",
+        "title": "El Arte del Lujo, Dominado a la Perfección",
+        "description1": "K-Rim Car es su referencia en el alquiler de coches de alta gama y servicios de detallado profesional. Ponemos a su disposición una experiencia afirmada y una verdadera cultura de la excelencia para ofrecer servicios de un nivel superior.",
+        "description2": "Nuestro compromiso con la calidad, la atención al detalle y la escucha del cliente ha convertido a K-Rim Car en un socio de confianza para una clientela exigente, en busca de un servicio realmente impecable.",
+        "features": {
+            "exp": "Más de 10 años de experiencia al servicio del lujo",
+            "fleet": "Flota de alta gama cuidadosamente seleccionada",
+            "wash": "Servicios de lavado y detallado premium",
+            "service": "Excelencia en el servicio y satisfacción del cliente",
+            "support": "Soporte y asistencia dedicados 24/7"
+        }
+    },
+    "services": {
+        "badge": "Nuestros Servicios",
+        "title": "Servicios de Excelencia Pensados Para Usted",
+        "subtitle": "Descubra la alianza perfecta del lujo, el profesionalismo y un servicio de alta gama.",
+        "rental": {
+            "title": "Alquiler de Coches de Lujo",
+            "description": "Explore nuestra flota de alta gama cuidadosamente seleccionada. Ideal para viajes de negocios, eventos prestigiosos o simplemente para disfrutar del placer de conducir un vehículo excepcional.",
+            "features": {
+                "fleet": "Flota de vehículos premium cuidadosamente seleccionados",
+                "flex": "Opciones de alquiler flexibles (corto y largo plazo)",
+                "insurance": "Seguro a todo riesgo incluido",
+                "delivery": "Servicio de entrega y recogida ofrecido"
+            }
+        },
+        "wash": {
+            "title": "Lavado de Coches Profesional",
+            "description": "Un servicio de lavado y detallado profesional diseñado para preservar el brillo, el valor y la elegancia de su vehículo, con productos de alta gama y técnicas expertas.",
+            "features": {
+                "detailing": "Detallado interior y exterior de alta gama",
+                "protection": "Tratamientos avanzados de protección de carrocería",
+                "products": "Productos profesionales de calidad superior",
+                "experts": "Servicio rápido y realizado por expertos"
+            }
+        },
+        "trust": {
+            "secure": {
+                "value": "100%",
+                "label": "Seguro"
+            },
+            "support": {
+                "value": "24/7",
+                "label": "Soporte Dedicado"
+            },
+            "vehicles": {
+                "value": "50+",
+                "label": "Vehículos Premium"
+            },
+            "clients": {
+                "value": "5000+",
+                "label": "Clientes Satisfechos"
+            }
+        }
+    },
+    "catalog": {
+        "badge": "Nuestra Flota",
+        "title1": "Colección Exclusiva",
+        "title2": "de Vehículos de Lujo",
+        "subtitle": "Elija entre nuestra selección de vehículos premium, cada uno mantenido con los más altos estándares",
+        "filters": {
+            "brand": "Marca",
+            "allBrands": "Todas las marcas",
+            "category": "Categoría",
+            "allCategories": "Todas las categorías",
+            "transmission": "Transmisión",
+            "allTransmissions": "Transmisión",
+            "manual": "Manual",
+            "automatic": "Automática",
+            "diesel": "Diésel",
+            "gasoline": "Gasolina",
+            "hybrid": "Híbrido",
+            "electric": "Eléctrico"
+        },
+        "card": {
+            "recommended": "Recomendado",
+            "places": "plazas",
+            "startingFrom": "Desde / Día",
+            "details": "Ver detalles"
+        }
+    },
+    "pricing": {
+        "badge": "Nuestros Precios de Lavado",
+        "title": "Paquetes de Lavado y Detallado de Alta Gama",
+        "subtitle": "Servicios diseñados para sublimar y proteger su vehículo excepcional.",
+        "popular": "ELECCIÓN N°1",
+        "book": "Reservar Ahora",
+        "packages": {
+            "express": {
+                "name": "Lavado Express",
+                "desc": "Limpieza exterior eficaz, ideal para devolver el brillo en pocos minutos.",
+                "features": [
+                    "Lavado exterior manual de alta calidad",
+                    "Limpieza de cristales exteriores",
+                    "Brillo de neumáticos profesional",
+                    "Secado rápido y sin marcas"
+                ]
+            },
+            "premium": {
+                "name": "Detallado Premium",
+                "desc": "Una limpieza completa interior + exterior, realizada con precisión profesional.",
+                "features": [
+                    "Lavado exterior completo",
+                    "Aspiración interior profunda",
+                    "Limpieza de salpicadero y superficies",
+                    "Cristales interiores y exteriores",
+                    "Brillo de neumáticos premium",
+                    "Aplicación de cera protectora"
+                ]
+            },
+            "luxe": {
+                "name": "Paquete Lujo",
+                "desc": "El tratamiento de detallado más completo para un acabado de exposición.",
+                "features": [
+                    "Todos los servicios del pack Premium incluidos",
+                    "Tratamiento profesional con barra de arcilla",
+                    "Corrección ligera de micro-arañazos",
+                    "Protección cerámica de alta durabilidad",
+                    "Limpieza y cuidado del cuero",
+                    "Limpieza del compartimento del motor"
+                ]
+            }
+        }
+    },
+    "testimonials": {
+        "googleRating": "Basado en 123 opiniones",
+        "verified": "Opiniones verificadas de Google Maps",
+        "title": "Nuestros Clientes Opinan",
+        "subtitle": "Descubra las opiniones reales de nuestros clientes en Marruecos. K-Rim Car está valorado en 4.9/5 gracias a su servicio premium, coches nuevos y entrega rápida en Tánger.",
+        "cta": "Reservar ahora vía WhatsApp 📲",
+        "reviews": {
+            "0": {
+                "text": "Servicio impecable, coche muy limpio. Recomiendo encarecidamente K-Rim Car por su profesionalismo."
+            },
+            "1": {
+                "text": "Una experiencia de alquiler sin estrés. Alquilé un Range Rover, estaba en perfectas condiciones. Gracias a todo el equipo."
+            },
+            "2": {
+                "text": "Mejor agencia en Casablanca. Puntualidad y servicio al cliente de primera. Volveré sin dudarlo."
+            },
+            "3": {
+                "text": "Precios muy correctos para coches de lujo. El personal es acogedor y muy servicial."
+            },
+            "4": {
+                "text": "Aprecié la transparencia y la calidad del servicio. Sin cargos ocultos, todo está claro desde el principio."
+            }
+        }
+    },
+    "details": {
+        "back": "Volver a los vehículos",
+        "from": "Desde",
+        "day": "/Día",
+        "book": "Reservar ahora",
+        "colors": "Colores Disponibles",
+        "specs": "Características",
+        "comfort": "Confort",
+        "security": "Seguridad",
+        "rates": "Tarifas de alquiler",
+        "daily": "Diario",
+        "weekly": "Semanal",
+        "monthly": "Mensual",
+        "allIncluded": "Todo incluido",
+        "popular": "Más Popular",
+        "reserve": "Reservar",
+        "notFound": "Vehículo no encontrado",
+        "backHome": "Volver al inicio",
+        "form": {
+            "title": "Reservar el",
+            "subtitle": "Complete los detalles a continuación para confirmar su reserva a través de WhatsApp.",
+            "name": "Nombre completo",
+            "startDate": "Fecha de inicio",
+            "endDate": "Fecha de fin",
+            "pickup": "Tipo de recogida",
+            "agency": "En Agencia",
+            "delivery": "Entrega",
+            "location": "Lugar de entrega",
+            "options": "Opciones",
+            "babySeat": "Silla de bebé",
+            "insurance": "Seguro completo",
+            "total": "Total estimado",
+            "submit": "Confirmar por WhatsApp",
+            "disclaimer": "Será redirigido a una conversación de WhatsApp con nuestro equipo para finalizar su reserva."
+        },
+        "specLabels": {
+            "transmission": "Transmisión",
+            "fuel": "Combustible",
+            "seats": "Plazas",
+            "power": "Potencia",
+            "consumption": "Consumo",
+            "gps": "GPS",
+            "camera": "Cámara",
+            "connectivity": "Conectividad"
+        }
+    },
+    "contact": {
+        "title": "Contáctenos Hoy",
+        "badge": "Contacto",
+        "subtitle": "Contacte a K-Rim Car, su agencia de alquiler de coches premium en Tánger. Ofrecemos un servicio rápido, fiable y disponible para entrega en el aeropuerto, estación de tren de Tánger Ville, hoteles y Malabata.",
+        "cta": "¿Tiene alguna pregunta? Estamos aquí para ayudarle. Contáctenos y discutamos cómo podemos servirle.",
+        "form": {
+            "title": "Envíenos un Mensaje",
+            "name": "Su Nombre",
+            "namePh": "Introduzca su nombre completo",
+            "email": "Dirección de Correo",
+            "emailPh": "ejemplo@email.com",
+            "phone": "Número de Teléfono",
+            "service": "Servicio de Interés",
+            "servicePh": "Seleccione un servicio",
+            "message": "Mensaje",
+            "messagePh": "Cuéntenos sus necesidades...",
+            "rental": "Alquiler de Coches",
+            "wash": "Lavado de Autos",
+            "both": "Ambos Servicios",
+            "submit": "Enviar Mensaje",
+            "whatsapp": "Contactar por WhatsApp"
+        },
+        "info": {
+            "title": "INFO CONTACTO",
+            "address": "Route de Malabata, Tánger, Marruecos",
+            "map": "Ver en Google Maps",
+            "hours": "Lunes - Viernes: 9:00 - 19:00",
+            "saturday": "Sábado: 10:00 - 14:00"
+        }
+    },
+    "footer": {
+        "description": "Alquiler de coches premium y servicios profesionales de lavado de coches. Excelencia, lujo y transparencia para todos sus viajes en Tánger.",
+        "cols": {
+            "services": "Servicios",
+            "company": "Empresa",
+            "support": "Soporte"
+        },
+        "links": {
+            "rental": "Alquiler de Coches",
+            "wash": "Lavado Auto",
+            "fleet": "Nuestra Flota",
+            "pricing": "Precios",
+            "about": "Acerca de",
+            "testimonials": "Testimonios",
+            "contact": "Contacto",
+            "careers": "Carreras",
+            "faq": "FAQ",
+            "terms": "Términos y Condiciones",
+            "privacy": "Política de Privacidad",
+            "help": "Centro de Ayuda"
+        },
+        "rights": "Todos los derechos reservados.",
+        "credit": "Diseñado con precisión y lujo."
+    },
+    "common": {
+        "readMore": "Saber Más",
+        "bookNow": "Reservar",
+        "whatsapp": "WhatsApp"
+    }
+}

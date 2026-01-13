@@ -1,0 +1,308 @@
+{
+    "metadata": {
+        "title": "K-Rim Car | Luxury Car Rental & Professional Car Wash Services",
+        "description": "Discover luxury car rental and professional car wash services with K-Rim Car. Premium vehicles, exceptional service, and unmatched quality.",
+        "keywords": "luxury car rental, premium car wash, car rental services, professional car wash, luxury cars Morocco, K-Rim Car Tangier"
+    },
+    "nav": {
+        "home": "Home",
+        "vehicles": "Vehicles",
+        "services": "Services",
+        "about": "About",
+        "contact": "Contact",
+        "pricing": "Pricing"
+    },
+    "hero": {
+        "badge": "Prestige Automotive Services",
+        "cta": "Book Now",
+        "ctaSecondary": "View Fleet",
+        "slides": {
+            "0": {
+                "title": "The Experience",
+                "highlight": "of Luxury",
+                "subtitle": "",
+                "description": "High-end car rental and premium wash services for a truly exclusive experience."
+            },
+            "1": {
+                "title": "Feel",
+                "highlight": "the Excellence",
+                "subtitle": "",
+                "description": "Discover our collection of premium vehicles accompanied by fully personalized service."
+            },
+            "2": {
+                "title": "Your",
+                "highlight": "Destination",
+                "subtitle": "Premium",
+                "description": "Elegance, comfort, and performance combined for an unforgettable experience."
+            }
+        },
+        "features": {
+            "reliable": {
+                "title": "Reliable Service",
+                "desc": "Security and transparency guaranteed"
+            },
+            "quality": {
+                "title": "Superior Quality",
+                "desc": "High-end standards"
+            },
+            "satisfaction": {
+                "title": "5★ Satisfaction",
+                "desc": "Recommended by our clients"
+            }
+        }
+    },
+    "about": {
+        "badge": "About K-Rim Car",
+        "title": "The Art of Luxury, Mastered to Perfection",
+        "description1": "K-Rim Car is your reference for high-end car rental and professional detailing services. We provide established expertise and a true culture of excellence to offer superior level services.",
+        "description2": "Our commitment to quality, attention to detail, and customer focus has made K-Rim Car a trusted partner for demanding clients looking for truly impeccable service.",
+        "features": {
+            "exp": "Over 10 years of expertise serving luxury",
+            "fleet": "Carefully selected high-end fleet",
+            "wash": "Premium wash and detailing services",
+            "service": "Service excellence and customer satisfaction",
+            "support": "Dedicated 24/7 support and assistance"
+        }
+    },
+    "services": {
+        "badge": "Our Services",
+        "title": "Excellence Services Designed For You",
+        "subtitle": "Discover the perfect alliance of luxury, professionalism, and high-end service.",
+        "rental": {
+            "title": "Luxury Car Rental",
+            "description": "Explore our carefully selected high-end fleet. Ideal for business trips, prestigious events, or simply enjoying the pleasure of driving an exceptional vehicle.",
+            "features": {
+                "fleet": "Carefully selected premium vehicle fleet",
+                "flex": "Flexible rental options (short & long term)",
+                "insurance": "Comprehensive insurance included",
+                "delivery": "Delivery and recovery service offered"
+            }
+        },
+        "wash": {
+            "title": "Professional Car Wash",
+            "description": "A professional wash and detailing service designed to preserve the shine, value, and elegance of your vehicle, with high-end products and expert techniques.",
+            "features": {
+                "detailing": "High-end interior & exterior detailing",
+                "protection": "Advanced bodywork protection treatments",
+                "products": "Superior quality professional products",
+                "experts": "Fast service performed by experts"
+            }
+        },
+        "trust": {
+            "secure": {
+                "value": "100%",
+                "label": "Secure"
+            },
+            "support": {
+                "value": "24/7",
+                "label": "Dedicated Support"
+            },
+            "vehicles": {
+                "value": "50+",
+                "label": "Premium Vehicles"
+            },
+            "clients": {
+                "value": "5000+",
+                "label": "Satisfied Clients"
+            }
+        }
+    },
+    "catalog": {
+        "badge": "Our Fleet",
+        "title1": "Exclusive Collection",
+        "title2": "of Luxury Vehicles",
+        "subtitle": "Choose from our selection of premium vehicles, each maintained to the highest standards",
+        "filters": {
+            "brand": "Brand",
+            "allBrands": "All brands",
+            "category": "Category",
+            "allCategories": "All categories",
+            "transmission": "Transmission",
+            "allTransmissions": "Transmission",
+            "manual": "Manual",
+            "automatic": "Automatic",
+            "diesel": "Diesel",
+            "gasoline": "Petrol",
+            "hybrid": "Hybrid",
+            "electric": "Electric"
+        },
+        "card": {
+            "recommended": "Recommended",
+            "places": "seats",
+            "startingFrom": "Starting from / Day",
+            "details": "View details"
+        }
+    },
+    "pricing": {
+        "badge": "Our Wash Rates",
+        "title": "High-End Wash and Detailing Packages",
+        "subtitle": "Services designed to enhance and protect your exceptional vehicle.",
+        "popular": "TOP CHOICE",
+        "book": "Book Now",
+        "packages": {
+            "express": {
+                "name": "Express Wash",
+                "desc": "Effective exterior cleaning, ideal for restoring shine in a few minutes.",
+                "features": [
+                    "High-quality manual exterior wash",
+                    "Exterior window cleaning",
+                    "Professional tire shine",
+                    "Quick & streak-free drying"
+                ]
+            },
+            "premium": {
+                "name": "Premium Detailing",
+                "desc": "Complete interior + exterior cleaning, performed with professional precision.",
+                "features": [
+                    "Complete exterior wash",
+                    "Deep interior vacuuming",
+                    "Dashboard & surface cleaning",
+                    "Interior & exterior windows",
+                    "Premium tire shine",
+                    "Protective wax application"
+                ]
+            },
+            "luxe": {
+                "name": "Luxury Package",
+                "desc": "The most complete detailing treatment for a showroom finish.",
+                "features": [
+                    "All Premium pack services included",
+                    "Professional clay bar treatment",
+                    "Light micro-scratch correction",
+                    "High durability ceramic protection",
+                    "Leather cleaning & care",
+                    "Engine bay cleaning"
+                ]
+            }
+        }
+    },
+    "testimonials": {
+        "googleRating": "Based on 123 reviews",
+        "verified": "Verified reviews from Google Maps",
+        "title": "Client Testimonials",
+        "subtitle": "Discover real reviews from our clients in Morocco. K-Rim Car is rated 4.9/5 thanks to its premium service, new cars, and fast delivery in Tangier.",
+        "cta": "Book now via WhatsApp 📲",
+        "reviews": {
+            "0": {
+                "text": "Impeccable service, very clean car. I highly recommend K-Rim Car for their professionalism."
+            },
+            "1": {
+                "text": "Stress-free rental experience. I rented a Range Rover, it was in perfect condition. Thanks to the whole team."
+            },
+            "2": {
+                "text": "Best agency in Casablanca. Punctuality and customer service on top. I will return without hesitation."
+            },
+            "3": {
+                "text": "Very fair prices for luxury cars. The staff is welcoming and very helpful."
+            },
+            "4": {
+                "text": "I appreciated the transparency and quality of service. No hidden fees, everything is clear from the start."
+            }
+        }
+    },
+    "details": {
+        "back": "Back to vehicles",
+        "from": "Starting from",
+        "day": "/Day",
+        "book": "Book now",
+        "colors": "Available Colors",
+        "specs": "Features",
+        "comfort": "Comfort Features",
+        "security": "Security",
+        "rates": "Rental Rates",
+        "daily": "Daily",
+        "weekly": "Weekly",
+        "monthly": "Monthly",
+        "allIncluded": "All inclusive",
+        "popular": "Most Popular",
+        "reserve": "Reserve",
+        "notFound": "Vehicle Not Found",
+        "backHome": "Back to Home",
+        "form": {
+            "title": "Book the",
+            "subtitle": "Fill in the details below to confirm your booking via WhatsApp.",
+            "name": "Full Name",
+            "startDate": "Start Date",
+            "endDate": "End Date",
+            "pickup": "Pickup Type",
+            "agency": "At Agency",
+            "delivery": "Delivery",
+            "location": "Delivery Location",
+            "options": "Options",
+            "babySeat": "Baby Seat",
+            "insurance": "Full Insurance",
+            "total": "Estimated Total",
+            "submit": "Confirm via WhatsApp",
+            "disclaimer": "You will be redirected to a WhatsApp conversation with our team to finalize your booking."
+        },
+        "specLabels": {
+            "transmission": "Transmission",
+            "fuel": "Fuel",
+            "seats": "Seats",
+            "power": "Power",
+            "consumption": "Consumption",
+            "gps": "GPS",
+            "camera": "Camera",
+            "connectivity": "Connectivity"
+        }
+    },
+    "contact": {
+        "title": "Contact Us Today",
+        "badge": "Contact Us",
+        "subtitle": "Contact K-Rim Car, your premium car rental agency in Tangier. We offer fast, reliable service available for delivery to the airport, Tangier Ville station, hotels, and Malabata.",
+        "cta": "Have any questions? We are here to help. Contact us and let's discuss how we can serve you.",
+        "form": {
+            "title": "Send Us a Message",
+            "name": "Your Name",
+            "namePh": "Enter your full name",
+            "email": "Email Address",
+            "emailPh": "example@email.com",
+            "phone": "Phone Number",
+            "service": "Service of Interest",
+            "servicePh": "Select a service",
+            "message": "Message",
+            "messagePh": "Tell us about your needs...",
+            "rental": "Car Rental",
+            "wash": "Car Wash",
+            "both": "Both Services",
+            "submit": "Send Message",
+            "whatsapp": "Contact on WhatsApp"
+        },
+        "info": {
+            "title": "CONTACT INFO",
+            "address": "Route de Malabata, Tangier, Morocco",
+            "map": "View on Google Maps",
+            "hours": "Monday - Friday: 9:00 AM - 7:00 PM",
+            "saturday": "Saturday: 10:00 AM - 2:00 PM"
+        }
+    },
+    "footer": {
+        "description": "Premium car rental & professional car wash services. Excellence, luxury, and transparency for all your travels in Tangier.",
+        "cols": {
+            "services": "Services",
+            "company": "Company",
+            "support": "Support"
+        },
+        "links": {
+            "rental": "Car Rental",
+            "wash": "Car Wash",
+            "fleet": "Our Fleet",
+            "pricing": "Pricing",
+            "about": "About",
+            "testimonials": "Testimonials",
+            "contact": "Contact",
+            "careers": "Careers",
+            "faq": "FAQ",
+            "terms": "Terms & Conditions",
+            "privacy": "Privacy Policy",
+            "help": "Help Center"
+        },
+        "rights": "All rights reserved.",
+        "credit": "Designed with precision & luxury."
+    },
+    "common": {
+        "readMore": "Learn More",
+        "bookNow": "Book Now",
+        "whatsapp": "WhatsApp"
+    }
+}

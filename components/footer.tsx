@@ -1,9 +1,13 @@
+"use client"
 
 import Image from "next/image"
-import Link from "next/link"
+import { Link } from "@/navigation"
 import { Instagram, ChevronRight } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 export function Footer() {
+  const t = useTranslations("footer")
+
   const SnapchatIcon = ({ className }: { className?: string }) => (
     <svg
       viewBox="0 0 24 24"
@@ -17,23 +21,23 @@ export function Footer() {
 
   const links = {
     services: [
-      { name: "Location de Voitures", href: "#rental" },
-      { name: "Lavage Auto", href: "#wash" },
-      { name: "Notre Flotte", href: "#catalog" },
-      { name: "Tarifs", href: "#pricing" },
+      { name: t("links.rental"), href: "#rental" },
+      { name: t("links.wash"), href: "#wash" },
+      { name: t("links.fleet"), href: "#catalog" },
+      { name: t("links.pricing"), href: "#pricing" },
     ],
     company: [
-      { name: "À Propos", href: "#about" },
-      { name: "Témoignages", href: "#testimonials" },
-      { name: "Contact", href: "#contact" },
+      { name: t("links.about"), href: "#about" },
+      { name: t("links.testimonials"), href: "#testimonials" },
+      { name: t("links.contact"), href: "#contact" },
       { name: "Route de Malabata, Tanger", href: "https://maps.app.goo.gl/K1XK6GjvZgzkNQ8v9" },
-      { name: "Carrières", href: "#" },
+      { name: t("links.careers"), href: "#" },
     ],
     support: [
-      { name: "FAQ", href: "/faq" },
-      { name: "Conditions Générales", href: "/cgv" },
-      { name: "Politique de Confidentialité", href: "/privacy" },
-      { name: "Centre d'Assistance", href: "/contact" },
+      { name: t("links.faq"), href: "/faq" },
+      { name: t("links.terms"), href: "/cgv" },
+      { name: t("links.privacy"), href: "/privacy" },
+      { name: t("links.help"), href: "/contact" },
     ]
   }
 
@@ -62,8 +66,7 @@ export function Footer() {
             </Link>
 
             <p className="text-[#888] leading-relaxed mb-8 max-w-sm font-light">
-              Location de voitures premium & services de lavage automobile professionnels.
-              Excellence, luxe et transparence pour tous vos déplacements à Tanger.
+              {t("description")}
             </p>
 
             <div className="flex gap-4">
@@ -94,14 +97,14 @@ export function Footer() {
           {/* Services Column */}
           <div className="lg:col-span-2">
             <h4 className="text-[#D4AF37] font-playfair text-lg uppercase tracking-widest mb-8 border-b border-[#D4AF37]/20 pb-2 inline-block">
-              Services
+              {t("cols.services")}
             </h4>
             <ul className="space-y-4">
               {links.services.map((link) => (
                 <li key={link.name}>
                   <Link href={link.href} className="group flex items-center text-[#888] hover:text-[#D4AF37] transition-colors duration-300">
-                    <ChevronRight className="h-3 w-3 mr-2 text-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity transform -translate-x-2 group-hover:translate-x-0" />
-                    <span className="transform group-hover:translate-x-1 transition-transform duration-300">{link.name}</span>
+                    <ChevronRight className="h-3 w-3 mr-2 text-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity transform -translate-x-2 group-hover:translate-x-0 rtl:rotate-180" />
+                    <span className="transform group-hover:translate-x-1 transition-transform duration-300 rtl:group-hover:-translate-x-1">{link.name}</span>
                   </Link>
                 </li>
               ))}
@@ -111,14 +114,14 @@ export function Footer() {
           {/* Entreprise Column */}
           <div className="lg:col-span-2">
             <h4 className="text-[#D4AF37] font-playfair text-lg uppercase tracking-widest mb-8 border-b border-[#D4AF37]/20 pb-2 inline-block">
-              Entreprise
+              {t("cols.company")}
             </h4>
             <ul className="space-y-4">
               {links.company.map((link) => (
                 <li key={link.name}>
                   <Link href={link.href} className="group flex items-center text-[#888] hover:text-[#D4AF37] transition-colors duration-300">
-                    <ChevronRight className="h-3 w-3 mr-2 text-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity transform -translate-x-2 group-hover:translate-x-0" />
-                    <span className="transform group-hover:translate-x-1 transition-transform duration-300">{link.name}</span>
+                    <ChevronRight className="h-3 w-3 mr-2 text-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity transform -translate-x-2 group-hover:translate-x-0 rtl:rotate-180" />
+                    <span className="transform group-hover:translate-x-1 transition-transform duration-300 rtl:group-hover:-translate-x-1">{link.name}</span>
                   </Link>
                 </li>
               ))}
@@ -128,14 +131,14 @@ export function Footer() {
           {/* Support Column */}
           <div className="lg:col-span-3">
             <h4 className="text-[#D4AF37] font-playfair text-lg uppercase tracking-widest mb-8 border-b border-[#D4AF37]/20 pb-2 inline-block">
-              Support
+              {t("cols.support")}
             </h4>
             <ul className="space-y-4">
               {links.support.map((link) => (
                 <li key={link.name}>
                   <Link href={link.href} className="group flex items-center text-[#888] hover:text-[#D4AF37] transition-colors duration-300">
-                    <ChevronRight className="h-3 w-3 mr-2 text-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity transform -translate-x-2 group-hover:translate-x-0" />
-                    <span className="transform group-hover:translate-x-1 transition-transform duration-300">{link.name}</span>
+                    <ChevronRight className="h-3 w-3 mr-2 text-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity transform -translate-x-2 group-hover:translate-x-0 rtl:rotate-180" />
+                    <span className="transform group-hover:translate-x-1 transition-transform duration-300 rtl:group-hover:-translate-x-1">{link.name}</span>
                   </Link>
                 </li>
               ))}
@@ -147,10 +150,10 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-[#D4AF37]/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-[#666] text-sm tracking-wide">
-            © 2025 <span className="text-[#D4AF37]">K-RIM CAR</span> — Tous droits réservés.
+            © 2025 <span className="text-[#D4AF37]">K-RIM CAR</span> — {t("rights")}
           </p>
           <p className="text-[#666] text-sm tracking-wide font-playfair italic">
-            Conçu avec précision & luxe.
+            {t("credit")}
           </p>
         </div>
       </div>

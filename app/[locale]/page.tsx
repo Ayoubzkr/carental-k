@@ -9,17 +9,17 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 
 export default function Home() {
-  return (
-    <main className="min-h-screen">
-      <Header />
-      <Hero />
-      <About />
-      <Services />
-      <Pricing />
-      <CarCatalog />
-      <Testimonials />
-      <Contact />
-      <Footer />
-    </main>
-  )
+    return (
+        <main className="min-h-screen">
+            <Header />
+            <Hero />
+            <About />
+            <Services />
+            <Pricing />
+            <CarCatalog />
+            <Testimonials />
+            <Contact />
+            <Footer />
+        </main>
+    )
 }

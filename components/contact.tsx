@@ -7,8 +7,11 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { useTranslations } from "next-intl"
 
 export function Contact() {
+  const t = useTranslations("contact")
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -43,7 +46,6 @@ Envoyé depuis le site web K-Rim Car.
   }
 
   return (
-
     <section id="contact" className="py-24 bg-[#050505]" aria-label="Contact K-Rim Car">
       <script
         type="application/ld+json"
@@ -81,60 +83,58 @@ Envoyé depuis le site web K-Rim Car.
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <div className="inline-block mb-4 px-6 py-2 border border-[#D4AF37]/30 rounded-full bg-[#D4AF37]/5">
-            <span className="text-sm font-mono uppercase tracking-wider text-[#D4AF37]">Contactez-Nous</span>
+            <span className="text-sm font-mono uppercase tracking-wider text-[#D4AF37]">{t("badge")}</span>
           </div>
 
           <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-6 text-white text-balance">
-            Contactez-Nous Aujourd'hui
+            {t("title")}
           </h2>
 
           <p className="text-white/50 mt-4 max-w-2xl mx-auto">
-            Contactez K-Rim Car, votre agence de location de voitures premium à Tanger.
-            Nous proposons un service rapide, fiable et disponible pour livraison à l’aéroport,
-            gare Tanger Ville, hôtels et Malabata.
+            {t("subtitle")}
           </p>
 
           <p className="text-lg text-white/60 text-balance leading-relaxed">
-            Vous avez des questions? Nous sommes là pour vous aider. Contactez-nous et discutons de la façon dont nous pouvons vous servir.
+            {t("cta")}
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-10 max-w-7xl mx-auto">
           {/* Left Column: Contact Form */}
           <div className="bg-[#0a0a0a] border border-[#D4AF37]/20 rounded-xl p-8 md:p-12 shadow-2xl">
-            <h3 className="text-2xl font-playfair font-bold text-white mb-8">Envoyez-Nous un Message</h3>
+            <h3 className="text-2xl font-playfair font-bold text-white mb-8">{t("form.title")}</h3>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label className="block text-xs font-bold text-white/70 uppercase tracking-wider mb-3">Votre Nom</label>
+                <label className="block text-xs font-bold text-white/70 uppercase tracking-wider mb-3">{t("form.name")}</label>
                 <Input
                   type="text"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className="bg-[#111] border-white/10 text-white placeholder:text-white/20 h-12 focus:border-[#D4AF37] transition-colors"
-                  placeholder="Entrez votre nom complet"
+                  placeholder={t("form.namePh")}
                   required
                   aria-required="true"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-white/70 uppercase tracking-wider mb-3">Adresse Email</label>
+                <label className="block text-xs font-bold text-white/70 uppercase tracking-wider mb-3">{t("form.email")}</label>
                 <Input
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className="bg-[#111] border-white/10 text-white placeholder:text-white/20 h-12 focus:border-[#D4AF37] transition-colors"
-                  placeholder="exemple@email.com"
+                  placeholder={t("form.emailPh")}
                   required
                   aria-required="true"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-white/70 uppercase tracking-wider mb-3">Numéro de Téléphone</label>
+                <label className="block text-xs font-bold text-white/70 uppercase tracking-wider mb-3">{t("form.phone")}</label>
                 <div className="flex bg-[#111] border border-white/10 rounded-md focus-within:border-[#D4AF37] transition-colors overflow-hidden">
-                  <div className="flex items-center justify-center px-4 bg-[#1a1a1a] border-r border-white/10 text-white/60 text-sm">
+                  <div className="flex items-center justify-center px-4 bg-[#1a1a1a] border-r border-white/10 text-white/60 text-sm dir-ltr">
                     +212
                   </div>
                   <Input
@@ -151,34 +151,34 @@ Envoyé depuis le site web K-Rim Car.
 
               <div>
                 <label className="block text-xs font-bold text-white/70 uppercase tracking-wider mb-3">
-                  Service qui Vous Intéresse
+                  {t("form.service")}
                 </label>
                 <Select onValueChange={(val) => setFormData({ ...formData, service: val })}>
                   <SelectTrigger className="bg-[#111] border-white/10 text-white h-12 focus:border-[#D4AF37]">
-                    <SelectValue placeholder="Sélectionnez un service" />
+                    <SelectValue placeholder={t("form.servicePh")} />
                   </SelectTrigger>
                   <SelectContent className="bg-[#111] border-[#D4AF37]/20 text-white">
-                    <SelectItem value="rental">Location de Voitures</SelectItem>
-                    <SelectItem value="wash">Lavage Automobile</SelectItem>
-                    <SelectItem value="both">Les Deux Services</SelectItem>
+                    <SelectItem value="rental">{t("form.rental")}</SelectItem>
+                    <SelectItem value="wash">{t("form.wash")}</SelectItem>
+                    <SelectItem value="both">{t("form.both")}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-white/70 uppercase tracking-wider mb-3">Message</label>
+                <label className="block text-xs font-bold text-white/70 uppercase tracking-wider mb-3">{t("form.message")}</label>
                 <Textarea
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className="bg-[#111] border-white/10 text-white placeholder:text-white/20 min-h-[150px] focus:border-[#D4AF37] resize-none p-4"
-                  placeholder="Parlez-nous de vos besoins..."
+                  placeholder={t("form.messagePh")}
                   required
                   aria-required="true"
                 />
               </div>
 
               <Button type="submit" className="w-full bg-[#D4AF37] text-black hover:bg-[#b0912d] font-bold text-lg h-14 mt-4 tracking-wide uppercase">
-                Envoyer le Message
+                {t("form.submit")}
               </Button>
 
               <a
@@ -187,7 +187,7 @@ Envoyé depuis le site web K-Rim Car.
                 className="block text-center w-full mt-3 bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
                 rel="noreferrer"
               >
-                Contacter sur WhatsApp
+                {t("form.whatsapp")}
               </a>
             </form>
           </div>
@@ -195,7 +195,7 @@ Envoyé depuis le site web K-Rim Car.
           {/* Right Column: Contact Info */}
           <div className="bg-[#0a0a0a] border border-[#D4AF37]/20 rounded-xl p-8 md:p-12 shadow-2xl flex flex-col h-full">
             <div className="mb-8 pb-4 border-b border-[#D4AF37]/20">
-              <h3 className="text-sm font-mono text-[#D4AF37] uppercase tracking-[0.2em] mb-1">Contact Info</h3>
+              <h3 className="text-sm font-mono text-[#D4AF37] uppercase tracking-[0.2em] mb-1">{t("info.title")}</h3>
             </div>
 
             <div className="mb-8">
@@ -203,15 +203,15 @@ Envoyé depuis le site web K-Rim Car.
                 <MapPin className="h-8 w-8 text-[#D4AF37] flex-shrink-0 mt-1" />
                 <div>
                   <h4 className="text-2xl font-playfair font-bold text-white mb-1">K-RIM CAR</h4>
-                  <p className="text-white/70 mb-4">Route de Malabata, Tanger, Maroc</p>
+                  <p className="text-white/70 mb-4">{t("info.address")}</p>
 
                   <Button
                     variant="outline"
                     className="border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black bg-transparent"
                     onClick={() => window.open("https://maps.app.goo.gl/K1XK6GjvZgzkNQ8v9", "_blank")}
                   >
-                    <MapPin className="h-4 w-4 mr-2" />
-                    Voir sur Google Maps
+                    <MapPin className="h-4 w-4 mr-2 rtl:ml-2 rtl:mr-0" />
+                    {t("info.map")}
                   </Button>
                 </div>
               </div>
@@ -238,7 +238,7 @@ Envoyé depuis le site web K-Rim Car.
                   <Phone className="h-5 w-5 text-[#D4AF37]" />
                 </div>
                 <div>
-                  <div className="text-white text-lg font-bold tracking-wide">+212 665 123 330</div>
+                  <div className="text-white text-lg font-bold tracking-wide ltr-text">+212 665 123 330</div>
                 </div>
               </div>
 
@@ -256,8 +256,8 @@ Envoyé depuis le site web K-Rim Car.
                   <Clock className="h-5 w-5 text-[#D4AF37]" />
                 </div>
                 <div>
-                  <div className="text-white font-medium">Lundi - Vendredi : 9h00 - 19h00</div>
-                  <div className="text-white/60 text-sm">Samedi : 10h00 - 14h00</div>
+                  <div className="text-white font-medium">{t("info.hours")}</div>
+                  <div className="text-white/60 text-sm">{t("info.saturday")}</div>
                 </div>
               </div>
             </div>

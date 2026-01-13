@@ -1,7 +1,6 @@
-
 "use client"
 
-import { useRouter } from "next/navigation"
+import { useRouter } from "@/navigation"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import {
@@ -39,7 +38,12 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover"
 import { format, differenceInDays } from "date-fns"
-import { fr } from "date-fns/locale"
+import { fr, enUS, es, ar } from "date-fns/locale" // Import other locales
+import { useLocale, useTranslations } from "next-intl"
+
+// We need to define Car type locally or import it, 
+// but since we are refactoring, we keep the import if it works.
+// Assuming @/data/cars exists and exports Car type.
 import { Car } from "@/data/cars"
 
 interface CarDetailsClientProps {
@@ -47,6 +51,8 @@ interface CarDetailsClientProps {
 }
 
 export function CarDetailsClient({ car }: CarDetailsClientProps) {
+    const t = useTranslations("details")
+    const locale = useLocale()
     const router = useRouter()
     const [selectedColorIndex, setSelectedColorIndex] = useState(0)
 
@@ -61,6 +67,16 @@ export function CarDetailsClient({ car }: CarDetailsClientProps) {
     const [withInsurance, setWithInsurance] = useState(false)
     const [totalPrice, setTotalPrice] = useState<number>(0)
     const [heroImage, setHeroImage] = useState<string | null>(null)
+
+    // Map locale string to date-fns locale object
+    const getDateLocale = () => {
+        switch (locale) {
+            case 'fr': return fr
+            case 'es': return es
+            case 'ar': return ar
+            default: return enUS
+        }
+    }
 
     useEffect(() => {
         if (car) {
@@ -106,8 +122,8 @@ export function CarDetailsClient({ car }: CarDetailsClientProps) {
     const handleWhatsAppReservation = () => {
         if (!car || !startDate || !endDate || !name) return
 
-        const formattedStart = format(startDate, 'dd/MM/yyyy', { locale: fr })
-        const formattedEnd = format(endDate, 'dd/MM/yyyy', { locale: fr })
+        const formattedStart = format(startDate, 'dd/MM/yyyy', { locale: getDateLocale() })
+        const formattedEnd = format(endDate, 'dd/MM/yyyy', { locale: getDateLocale() })
         const days = differenceInDays(endDate, startDate) + 1
 
         const message = `*Nouvelle Réservation - K-Rim Car*
@@ -144,14 +160,12 @@ ${withInsurance ? "- Assurance complète" : ""}
         <>
             <div className="container mx-auto px-4 py-6">
                 <Button
-                    onClick={() => {
-                        window.location.href = '/#catalog'
-                    }}
+                    onClick={() => router.push('/#catalog')}
                     variant="outline"
                     className="rounded-full border-white/20 text-white hover:bg-white/10 hover:text-white"
                 >
-                    <ArrowLeft className="mr-2 h-4 w-4" />
-                    Retour aux véhicules
+                    <ArrowLeft className="mr-2 h-4 w-4 rtl:ml-0 rtl:mr-2 rtl:rotate-180" />
+                    {t("back")}
                 </Button>
             </div>
 
@@ -177,9 +191,9 @@ ${withInsurance ? "- Assurance complète" : ""}
                             </div>
 
                             <div className="flex items-baseline gap-2 mb-8">
-                                <span className="text-gray-400">À partir de</span>
-                                <span className="text-4xl font-bold text-[#D4AF37]">{car.basePrice} MAD</span>
-                                <span className="text-gray-400">/Jour</span>
+                                <span className="text-gray-400">{t("from")}</span>
+                                <span className="text-4xl font-bold text-[#D4AF37] dir-ltr">{car.basePrice} MAD</span>
+                                <span className="text-gray-400">{t("day")}</span>
                             </div>
 
                             <Dialog open={isReservationOpen} onOpenChange={setIsReservationOpen}>
@@ -187,30 +201,29 @@ ${withInsurance ? "- Assurance complète" : ""}
                                     <Button
                                         className="bg-[#D4AF37] text-black hover:bg-[#b0912d] rounded-full px-8 py-6 text-lg font-semibold"
                                     >
-                                        Réserver maintenant
-                                        <Phone className="ml-2 h-5 w-5" />
+                                        {t("book")}
+                                        <Phone className="ml-2 h-5 w-5 rtl:mr-2 rtl:ml-0" />
                                     </Button>
                                 </DialogTrigger>
                                 <DialogContent className="sm:max-w-[500px] bg-[#0F0F0F] border border-[#D4AF37]/30 text-white p-0 overflow-hidden">
                                     <DialogHeader className="p-6 pb-2 text-center border-b border-white/10 bg-[#151515]">
                                         <DialogTitle className="text-2xl font-playfair font-bold text-[#D4AF37]">
-                                            Réserver la {car.name}
+                                            {t("form.title")} {car.name}
                                         </DialogTitle>
                                         <p className="text-xs text-white/50 mt-1">
-                                            Remplissez les informations ci-dessous pour confirmer votre réservation via WhatsApp.
+                                            {t("form.subtitle")}
                                         </p>
                                     </DialogHeader>
 
                                     <div className="p-6 space-y-5">
-                                        {/* Simplified Form Content for brevity in update, keep original logic */}
                                         <div className="space-y-2">
                                             <Label className="text-sm font-medium text-[#D4AF37] flex items-center gap-2">
-                                                <User className="w-4 h-4" /> Nom complet *
+                                                <User className="w-4 h-4" /> {t("form.name")} *
                                             </Label>
                                             <Input
                                                 value={name}
                                                 onChange={(e) => setName(e.target.value)}
-                                                placeholder="Votre nom"
+                                                placeholder={t("form.name")}
                                                 className="bg-black/50 border-white/10 text-white focus:border-[#D4AF37] rounded-md h-11"
                                             />
                                         </div>
@@ -218,7 +231,7 @@ ${withInsurance ? "- Assurance complète" : ""}
                                         <div className="grid grid-cols-2 gap-4">
                                             <div className="space-y-2">
                                                 <Label className="text-sm font-medium text-[#D4AF37] flex items-center gap-2">
-                                                    <CalendarIcon className="w-4 h-4" /> Date de début *
+                                                    <CalendarIcon className="w-4 h-4" /> {t("form.startDate")} *
                                                 </Label>
                                                 <Popover>
                                                     <PopoverTrigger asChild>
@@ -229,7 +242,7 @@ ${withInsurance ? "- Assurance complète" : ""}
                                                                 !startDate && "text-muted-foreground"
                                                             )}
                                                         >
-                                                            {startDate ? format(startDate, "dd/MM/yyyy") : <span className="text-white/40">Choisir...</span>}
+                                                            {startDate ? format(startDate, "dd/MM/yyyy") : <span className="text-white/40">...</span>}
                                                         </Button>
                                                     </PopoverTrigger>
                                                     <PopoverContent className="w-auto p-0 bg-[#1a1a1a] border-[#D4AF37]/20 text-white">
@@ -239,13 +252,14 @@ ${withInsurance ? "- Assurance complète" : ""}
                                                             onSelect={setStartDate}
                                                             initialFocus
                                                             className="pointer-events-auto"
+                                                            locale={getDateLocale()}
                                                         />
                                                     </PopoverContent>
                                                 </Popover>
                                             </div>
                                             <div className="space-y-2">
                                                 <Label className="text-sm font-medium text-[#D4AF37] flex items-center gap-2">
-                                                    <CalendarIcon className="w-4 h-4" /> Date de fin *
+                                                    <CalendarIcon className="w-4 h-4" /> {t("form.endDate")} *
                                                 </Label>
                                                 <Popover>
                                                     <PopoverTrigger asChild>
@@ -256,7 +270,7 @@ ${withInsurance ? "- Assurance complète" : ""}
                                                                 !endDate && "text-muted-foreground"
                                                             )}
                                                         >
-                                                            {endDate ? format(endDate, "dd/MM/yyyy") : <span className="text-white/40">Choisir...</span>}
+                                                            {endDate ? format(endDate, "dd/MM/yyyy") : <span className="text-white/40">...</span>}
                                                         </Button>
                                                     </PopoverTrigger>
                                                     <PopoverContent className="w-auto p-0 bg-[#1a1a1a] border-[#D4AF37]/20 text-white">
@@ -266,6 +280,7 @@ ${withInsurance ? "- Assurance complète" : ""}
                                                             onSelect={setEndDate}
                                                             initialFocus
                                                             className="pointer-events-auto"
+                                                            locale={getDateLocale()}
                                                         />
                                                     </PopoverContent>
                                                 </Popover>
@@ -274,33 +289,32 @@ ${withInsurance ? "- Assurance complète" : ""}
 
                                         <div className="space-y-2">
                                             <Label className="text-sm font-medium text-[#D4AF37] flex items-center gap-2">
-                                                <MapPinIcon className="w-4 h-4" /> Type de retrait *
+                                                <MapPinIcon className="w-4 h-4" /> {t("form.pickup")} *
                                             </Label>
                                             <Select value={pickupType} onValueChange={setPickupType}>
                                                 <SelectTrigger className="w-full bg-black/50 border-white/10 text-white focus:ring-[#D4AF37] h-11">
-                                                    <SelectValue placeholder="Choisir le type de retrait" />
+                                                    <SelectValue />
                                                 </SelectTrigger>
                                                 <SelectContent className="bg-[#1a1a1a] border border-white/10 text-white">
-                                                    <SelectItem value="agence">À l'agence</SelectItem>
-                                                    <SelectItem value="livraison">Livraison</SelectItem>
+                                                    <SelectItem value="agence">{t("form.agency")}</SelectItem>
+                                                    <SelectItem value="livraison">{t("form.delivery")}</SelectItem>
                                                 </SelectContent>
                                             </Select>
                                         </div>
 
                                         {pickupType === "livraison" && (
                                             <div className="space-y-2 animate-in fade-in slide-in-from-top-2">
-                                                <Label className="text-sm font-medium text-[#D4AF37]">Lieu de livraison</Label>
+                                                <Label className="text-sm font-medium text-[#D4AF37]">{t("form.location")}</Label>
                                                 <Input
                                                     value={pickupLocation}
                                                     onChange={(e) => setPickupLocation(e.target.value)}
-                                                    placeholder="Adresse, Hôtel, Aéroport..."
                                                     className="bg-black/50 border-white/10 text-white focus:border-[#D4AF37] h-11"
                                                 />
                                             </div>
                                         )}
 
                                         <div className="py-2 space-y-3 border-t border-white/10 mt-2">
-                                            <h4 className="text-sm font-medium text-white/70">Options</h4>
+                                            <h4 className="text-sm font-medium text-white/70">{t("form.options")}</h4>
                                             <div className="flex items-center space-x-2 bg-black/30 p-3 rounded-lg border border-white/5 hover:border-[#D4AF37]/30 transition-colors">
                                                 <Checkbox
                                                     id="baby-seat"
@@ -308,7 +322,7 @@ ${withInsurance ? "- Assurance complète" : ""}
                                                     onCheckedChange={(c) => setWithBabySeat(c as boolean)}
                                                     className="border-white/30 data-[state=checked]:bg-[#D4AF37] data-[state=checked]:border-[#D4AF37]"
                                                 />
-                                                <Label htmlFor="baby-seat" className="text-sm font-normal cursor-pointer flex-1">Siège bébé (+50 MAD/j)</Label>
+                                                <Label htmlFor="baby-seat" className="text-sm font-normal cursor-pointer flex-1">{t("form.babySeat")} (+50 MAD/j)</Label>
                                             </div>
                                             <div className="flex items-center space-x-2 bg-black/30 p-3 rounded-lg border border-white/5 hover:border-[#D4AF37]/30 transition-colors">
                                                 <Checkbox
@@ -317,25 +331,25 @@ ${withInsurance ? "- Assurance complète" : ""}
                                                     onCheckedChange={(c) => setWithInsurance(c as boolean)}
                                                     className="border-white/30 data-[state=checked]:bg-[#D4AF37] data-[state=checked]:border-[#D4AF37]"
                                                 />
-                                                <Label htmlFor="insurance" className="text-sm font-normal cursor-pointer flex-1">Assurance complète (+100 MAD/j)</Label>
+                                                <Label htmlFor="insurance" className="text-sm font-normal cursor-pointer flex-1">{t("form.insurance")} (+100 MAD/j)</Label>
                                             </div>
                                         </div>
 
                                         <div className="pt-4 border-t border-white/10 flex flex-col items-center gap-4">
                                             <div className="text-center">
-                                                <span className="text-sm text-white/50 block mb-1">Prix total estimé</span>
-                                                <span className="text-3xl font-bold text-[#D4AF37]">{totalPrice} MAD</span>
+                                                <span className="text-sm text-white/50 block mb-1">{t("form.total")}</span>
+                                                <span className="text-3xl font-bold text-[#D4AF37] dir-ltr">{totalPrice} MAD</span>
                                             </div>
                                             <Button
                                                 disabled={!startDate || !endDate || !name}
                                                 onClick={handleWhatsAppReservation}
                                                 className="w-full bg-gradient-to-r from-[#D4AF37] to-[#AA8A2C] text-black hover:opacity-90 font-bold py-6 text-lg rounded-xl shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all transform hover:scale-[1.02]"
                                             >
-                                                Confirmer via WhatsApp
+                                                {t("form.submit")}
                                                 <img src="/whatsapp.svg" alt="WA" className="ml-2 w-6 h-6" />
                                             </Button>
                                             <p className="text-[10px] text-white/30 text-center max-w-xs">
-                                                Vous serez redirigé vers une conversation WhatsApp avec nos équipes pour finaliser votre réservation.
+                                                {t("form.disclaimer")}
                                             </p>
                                         </div>
 
@@ -345,12 +359,12 @@ ${withInsurance ? "- Assurance complète" : ""}
 
                         </motion.div>
 
-                        {/* Right Image - NOW OPTIMIZED */}
+                        {/* Right Image */}
                         <motion.div
                             initial={{ opacity: 0, x: 50 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.7, delay: 0.2 }}
-                            className="relative h-[400px] lg:h-[500px] w-full flex items-center justify-center"
+                            className="hidden lg:flex relative h-[400px] lg:h-[500px] w-full items-center justify-center"
                         >
                             <div className="absolute inset-0 bg-[#D4AF37] blur-[100px] opacity-20 rounded-full" />
                             <AnimatePresence mode="wait">
@@ -389,7 +403,7 @@ ${withInsurance ? "- Assurance complète" : ""}
                     {/* Main View */}
                     <div className="lg:col-span-2 bg-[#111] rounded-2xl overflow-hidden border border-white/10 relative h-[500px] md:h-[600px] flex items-center justify-center p-4 group">
                         <motion.div
-                            key={heroImage} // Key helps trigger simple re-render for new image, motion handles opacity via AnimatePresence if wrapper used, but here simpler key swap is okay
+                            key={heroImage}
                             className="relative w-full h-full"
                         >
                             <Image
@@ -403,7 +417,7 @@ ${withInsurance ? "- Assurance complète" : ""}
 
                     {/* Color Selector */}
                     <div className="bg-[#111] rounded-2xl p-8 border border-white/10">
-                        <h3 className="text-xl font-semibold mb-6">Couleurs Disponibles</h3>
+                        <h3 className="text-xl font-semibold mb-6">{t("colors")}</h3>
                         <div className="flex flex-wrap gap-4 mb-8">
                             {car.colors.map((color, index) => (
                                 <div key={index} className="flex flex-col items-center gap-2">
@@ -428,7 +442,6 @@ ${withInsurance ? "- Assurance complète" : ""}
                         </div>
 
                         <div className="grid grid-cols-4 gap-2">
-                            {/* Gallery thumbnails 2-5 - NOW OPTIMIZED */}
                             {[2, 3, 4, 5].map((i) => (
                                 <div key={i} className="relative aspect-square bg-white/5 rounded-lg overflow-hidden cursor-pointer hover:ring-1 hover:ring-[#D4AF37]">
                                     <Image
@@ -458,16 +471,16 @@ ${withInsurance ? "- Assurance complète" : ""}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
             >
-                <h2 className="text-3xl font-bold mb-8 border-l-4 border-[#D4AF37] pl-4">Caractéristiques</h2>
+                <h2 className="text-3xl font-bold mb-8 border-l-4 border-[#D4AF37] pl-4 rtl:border-l-0 rtl:border-r-4 rtl:pl-0 rtl:pr-4">{t("specs")}</h2>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <SpecItem icon={Settings} label="Transmission" value={car.transmission} />
-                    <SpecItem icon={Fuel} label="Carburant" value={car.fuel} />
-                    <SpecItem icon={Users} label="Places" value={`${car.passengers} Places`} />
-                    <SpecItem icon={Zap} label="Puissance" value={car.power} />
-                    <SpecItem icon={Gauge} label="Consommation" value={car.consumption} />
-                    <SpecItem icon={MapPin} label="GPS" value={car.gps ? "Intégré" : "Non"} />
-                    <SpecItem icon={Camera} label="Caméra" value={car.camera} />
-                    <SpecItem icon={Smartphone} label="Connectivité" value="CarPlay / Android" />
+                    <SpecItem icon={Settings} label={t("specLabels.transmission")} value={car.transmission} />
+                    <SpecItem icon={Fuel} label={t("specLabels.fuel")} value={car.fuel} />
+                    <SpecItem icon={Users} label={t("specLabels.seats")} value={`${car.passengers}`} />
+                    <SpecItem icon={Zap} label={t("specLabels.power")} value={car.power} />
+                    <SpecItem icon={Gauge} label={t("specLabels.consumption")} value={car.consumption} />
+                    <SpecItem icon={MapPin} label={t("specLabels.gps")} value={car.gps ? "Intégré" : "Non"} />
+                    <SpecItem icon={Camera} label={t("specLabels.camera")} value={car.camera} />
+                    <SpecItem icon={Smartphone} label={t("specLabels.connectivity")} value="CarPlay / Android" />
                 </div>
             </motion.section>
 
@@ -484,7 +497,7 @@ ${withInsurance ? "- Assurance complète" : ""}
                     <div className="bg-[#111] p-8 rounded-2xl border border-white/10">
                         <div className="flex items-center gap-3 mb-6">
                             <Armchair className="text-[#D4AF37] h-6 w-6" />
-                            <h3 className="text-2xl font-semibold">Équipements Confort</h3>
+                            <h3 className="text-2xl font-semibold">{t("comfort")}</h3>
                         </div>
                         <ul className="space-y-4">
                             {car.equipment.comfort.map((item, i) => (
@@ -500,7 +513,7 @@ ${withInsurance ? "- Assurance complète" : ""}
                     <div className="bg-[#111] p-8 rounded-2xl border border-white/10">
                         <div className="flex items-center gap-3 mb-6">
                             <Shield className="text-[#D4AF37] h-6 w-6" />
-                            <h3 className="text-2xl font-semibold">Sécurité</h3>
+                            <h3 className="text-2xl font-semibold">{t("security")}</h3>
                         </div>
                         <ul className="space-y-4">
                             {car.equipment.security.map((item, i) => (
@@ -522,19 +535,19 @@ ${withInsurance ? "- Assurance complète" : ""}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
             >
-                <h2 className="text-3xl font-bold text-center mb-12">Tarifs de location</h2>
+                <h2 className="text-3xl font-bold text-center mb-12">{t("rates")}</h2>
                 <div className="grid md:grid-cols-3 gap-8 items-center max-w-5xl mx-auto">
                     {/* Daily */}
                     <div className="bg-[#111] p-8 rounded-2xl border border-white/10 hover:border-[#D4AF37]/30 transition-all text-center">
-                        <h3 className="text-2xl font-semibold mb-2">Journalier</h3>
-                        <div className="text-3xl font-bold text-[#D4AF37] mb-2">{car.pricing.daily} MAD</div>
-                        <p className="text-sm text-gray-500 mb-6">Tout inclus</p>
+                        <h3 className="text-2xl font-semibold mb-2">{t("daily")}</h3>
+                        <div className="text-3xl font-bold text-[#D4AF37] mb-2 dir-ltr">{car.pricing.daily} MAD</div>
+                        <p className="text-sm text-gray-500 mb-6">{t("allIncluded")}</p>
                         <Button
                             onClick={() => setIsReservationOpen(true)}
                             variant="outline"
                             className="w-full border-white/20 hover:bg-[#D4AF37] hover:text-black hover:border-transparent transition-all"
                         >
-                            Réserver
+                            {t("reserve")}
                         </Button>
                     </div>
 
@@ -544,30 +557,30 @@ ${withInsurance ? "- Assurance complète" : ""}
                         className="bg-[#0f0f0f] p-8 rounded-2xl border-2 border-[#D4AF37] relative text-center shadow-[0_0_30px_rgba(212,175,55,0.1)]"
                     >
                         <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#D4AF37] text-black hover:bg-[#b0912d]">
-                            Le plus populaire
+                            {t("popular")}
                         </Badge>
-                        <h3 className="text-2xl font-semibold mb-2 text-[#D4AF37]">Hebdomadaire</h3>
-                        <div className="text-4xl font-bold text-white mb-2">{car.pricing.weekly} MAD</div>
-                        <p className="text-sm text-gray-400 mb-6">Tout inclus</p>
+                        <h3 className="text-2xl font-semibold mb-2 text-[#D4AF37]">{t("weekly")}</h3>
+                        <div className="text-4xl font-bold text-white mb-2 dir-ltr">{car.pricing.weekly} MAD</div>
+                        <p className="text-sm text-gray-400 mb-6">{t("allIncluded")}</p>
                         <Button
                             onClick={() => setIsReservationOpen(true)}
                             className="w-full bg-[#D4AF37] text-black hover:bg-[#b0912d]"
                         >
-                            Réserver maintenant
+                            {t("book")}
                         </Button>
                     </motion.div>
 
                     {/* Monthly */}
                     <div className="bg-[#111] p-8 rounded-2xl border border-white/10 hover:border-[#D4AF37]/30 transition-all text-center">
-                        <h3 className="text-2xl font-semibold mb-2">Mensuel</h3>
-                        <div className="text-3xl font-bold text-[#D4AF37] mb-2">{car.pricing.monthly} MAD</div>
-                        <p className="text-sm text-gray-500 mb-6">Tout inclus</p>
+                        <h3 className="text-2xl font-semibold mb-2">{t("monthly")}</h3>
+                        <div className="text-3xl font-bold text-[#D4AF37] mb-2 dir-ltr">{car.pricing.monthly} MAD</div>
+                        <p className="text-sm text-gray-500 mb-6">{t("allIncluded")}</p>
                         <Button
                             onClick={() => setIsReservationOpen(true)}
                             variant="outline"
                             className="w-full border-white/20 hover:bg-[#D4AF37] hover:text-black hover:border-transparent transition-all"
                         >
-                            Réserver
+                            {t("reserve")}
                         </Button>
                     </div>
                 </div>

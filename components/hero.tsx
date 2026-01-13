@@ -4,44 +4,27 @@ import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Shield, Award } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
+import { useTranslations } from "next-intl"
 
-const heroSlides = [
-  {
-    image: "/images/cars/mercedes-class-a-white.jpg",
-    title: "L'Expérience",
-    highlight: "du Luxe",
-    subtitle: "",
-    description:
-      "Location de voitures haut de gamme et services de lavage premium pour une expérience vraiment exclusive.",
-  },
-  {
-    image: "/images/cars/tiguan-black.jpg",
-    title: "Ressentez",
-    highlight: "l'Excellence",
-    subtitle: "",
-    description: "Découvrez notre collection de véhicules haut de gamme accompagnés d’un service entièrement personnalisé.",
-  },
-  {
-    image: "/images/cars/porsche-macan-black.jpg",
-    title: "Votre",
-    highlight: "Destination",
-    subtitle: "Premium",
-    description: "Élégance, confort et performance réunis pour une expérience inoubliable.",
-  },
+// On garde les images ici car ce n'est pas du texte
+const slideImages = [
+  "/images/cars/mercedes-class-a-white.jpg",
+  "/images/cars/tiguan-black.jpg",
+  "/images/cars/porsche-macan-black.jpg",
 ]
 
 export function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const t = useTranslations("hero")
+  const tCommon = useTranslations("common")
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
-    }, 5000) // Change slide every 5 seconds
+      setCurrentSlide((prev) => (prev + 1) % slideImages.length)
+    }, 5000)
 
     return () => clearInterval(timer)
   }, [])
-
-  const slide = heroSlides[currentSlide]
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -55,7 +38,7 @@ export function Hero() {
           className="absolute inset-0 z-0"
         >
           <motion.img
-            src={slide.image}
+            src={slideImages[currentSlide]}
             alt="Luxury Car Background"
             className="w-full h-full object-cover"
             animate={{ scale: [1, 1.05] }}
@@ -75,7 +58,7 @@ export function Hero() {
             className="inline-block mb-6 px-4 py-2 border border-primary/30 rounded-full"
           >
             <span className="text-sm font-mono uppercase tracking-wider text-primary">
-              Services Automobiles de Prestige
+              {t('badge')}
             </span>
           </motion.div>
 
@@ -88,12 +71,12 @@ export function Hero() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 text-balance"
             >
-              {slide.title}{" "}
+              {t(`slides.${currentSlide}.title`)}{" "}
               <span className="text-primary relative inline-block">
-                {slide.highlight}
+                {t(`slides.${currentSlide}.highlight`)}
                 <span className="absolute inset-0 animate-shimmer" />
               </span>{" "}
-              {slide.subtitle}
+              {t(`slides.${currentSlide}.subtitle`)}
             </motion.h1>
           </AnimatePresence>
 
@@ -106,7 +89,7 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-xl md:text-2xl text-foreground/70 mb-12 max-w-2xl mx-auto text-balance leading-relaxed"
             >
-              {slide.description}
+              {t(`slides.${currentSlide}.description`)}
             </motion.p>
           </AnimatePresence>
 
@@ -120,13 +103,13 @@ export function Hero() {
               size="lg"
               className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 py-6"
               onClick={() => {
-                const message = "Bonjour, je souhaite réserver un véhicule."
+                const message = tCommon('bookNow') + "..."
                 const whatsappUrl = `https://wa.me/212665123330?text=${encodeURIComponent(message)}`
                 window.open(whatsappUrl, "_blank")
               }}
             >
-              Réserver Maintenant
-              <ArrowRight className="ml-2 h-5 w-5" />
+              {t('cta')}
+              <ArrowRight className="ml-2 h-5 w-5 rtl:rotate-180" />
             </Button>
             <Button
               size="lg"
@@ -139,12 +122,12 @@ export function Hero() {
                 }
               }}
             >
-              Voir la Flotte
+              {t('ctaSecondary')}
             </Button>
           </motion.div>
 
           <div className="flex justify-center gap-2 mb-8">
-            {heroSlides.map((_, index) => (
+            {slideImages.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
@@ -164,18 +147,18 @@ export function Hero() {
           >
             <div className="bg-card/50 backdrop-blur-sm border border-border rounded-lg p-6 hover:border-primary/40 transition-colors">
               <Shield className="h-8 w-8 text-primary mx-auto mb-3" />
-              <h3 className="font-mono text-sm uppercase tracking-wider mb-2">Service Fiable</h3>
-              <p className="text-sm text-foreground/60">Sécurité et transparence garanties</p>
+              <h3 className="font-mono text-sm uppercase tracking-wider mb-2">{t('features.reliable.title')}</h3>
+              <p className="text-sm text-foreground/60">{t('features.reliable.desc')}</p>
             </div>
             <div className="bg-card/50 backdrop-blur-sm border border-border rounded-lg p-6 hover:border-primary/40 transition-colors">
               <Award className="h-8 w-8 text-primary mx-auto mb-3" />
-              <h3 className="font-mono text-sm uppercase tracking-wider mb-2">Qualité Supérieure</h3>
-              <p className="text-sm text-foreground/60">Standards haut de gamme</p>
+              <h3 className="font-mono text-sm uppercase tracking-wider mb-2">{t('features.quality.title')}</h3>
+              <p className="text-sm text-foreground/60">{t('features.quality.desc')}</p>
             </div>
             <div className="bg-card/50 backdrop-blur-sm border border-border rounded-lg p-6 hover:border-primary/40 transition-colors">
               <div className="text-3xl mx-auto mb-3">⭐</div>
-              <h3 className="font-mono text-sm uppercase tracking-wider mb-2">Satisfaction 5★</h3>
-              <p className="text-sm text-foreground/60">Recommandé par nos clients</p>
+              <h3 className="font-mono text-sm uppercase tracking-wider mb-2">{t('features.satisfaction.title')}</h3>
+              <p className="text-sm text-foreground/60">{t('features.satisfaction.desc')}</p>
             </div>
           </motion.div>
         </div>

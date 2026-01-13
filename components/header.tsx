@@ -1,17 +1,20 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { usePathname } from "next/navigation"
 import Image from "next/image"
-import Link from "next/link"
+import { usePathname } from "@/navigation" // Utiliser la navigation typée
+import { Link } from "@/navigation" // Utiliser le Link typé
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const pathname = usePathname()
-  const isHome = pathname === "/"
+  const isHome = pathname === "/" || pathname === "" // Le pathname de next-intl ne contient pas la locale
+  const t = useTranslations('nav')
+  const tCommon = useTranslations('common')
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,23 +25,35 @@ export function Header() {
   }, [])
 
   const navItems = [
-    { name: "Accueil", href: "home" },
-    { name: "À Propos", href: "about" },
-    { name: "Location", href: "rental" },
-    { name: "Lavage", href: "wash" },
-    { name: "Véhicules", href: "catalog" },
-    // "Tarifs" removed
-    { name: "Témoignages", href: "testimonials" },
-    { name: "Contact", href: "contact" },
+    { name: t('home'), href: "home" },
+    { name: t('about'), href: "about" },
+    { name: t('services'), href: "services" },
+    { name: t('vehicles'), href: "catalog" },
+    { name: t('contact'), href: "contact" },
   ]
 
   const getHref = (id: string) => {
-    return isHome ? `#${id}` : `/#${id}`
+    // Si on est sur la home, on utilise l'ancre seulement pour le scroll smooth (géré par onClick),
+    // mais pour le href on met le chemin complet pour le SEO et le fallback.
+    // Link de next-intl ajoutera la locale automatiquement.
+    return `/#${id}`
+  }
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    if (isHome) {
+      e.preventDefault();
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        setIsMobileMenuOpen(false);
+      }
+    }
+    // Sinon, laisser le Link faire la navigation vers /locale/#id
   }
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled || !isHome ? "bg-black/95 backdrop-blur-md border-b border-white/10" : "bg-transparent"
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled || isMobileMenuOpen ? "bg-black/95 backdrop-blur-md border-b border-white/10" : "bg-transparent/50 backdrop-blur-sm"
         }`}
     >
       <div className="container mx-auto px-4">
@@ -52,15 +67,10 @@ export function Header() {
           <nav className="hidden lg:flex items-center gap-8">
             {navItems.map((item) => (
               <Link
-                key={item.name}
+                key={item.href}
                 href={getHref(item.href)}
                 className="text-sm font-mono uppercase tracking-wider text-white/80 hover:text-[#D4AF37] transition-colors"
-                onClick={() => {
-                  if (isHome) {
-                    const el = document.getElementById(item.href);
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
+                onClick={(e) => handleNavClick(e, item.href)}
               >
                 {item.name}
               </Link>
@@ -72,19 +82,21 @@ export function Header() {
               variant="outline"
               className="border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black bg-transparent transition-all"
               onClick={() => {
-                const message = "Bonjour, je souhaite réserver un véhicule."
-                const whatsappUrl = `https://wa.me/212665123330?text=${encodeURIComponent(message)}`
+                const message = tCommon('bookNow') + "..." // Simplifié
+                const whatsappUrl = `https://wa.me/212665123330?text=${encodeURIComponent("Bonjour/Hi")}`
                 window.open(whatsappUrl, "_blank")
               }}
             >
-              Réserver
+              {tCommon('bookNow')}
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="lg:hidden" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label="Toggle menu">
-            {isMobileMenuOpen ? <X className="h-6 w-6 text-[#D4AF37]" /> : <Menu className="h-6 w-6 text-[#D4AF37]" />}
-          </button>
+          <div className="flex items-center gap-4 lg:hidden">
+            <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label="Toggle menu">
+              {isMobileMenuOpen ? <X className="h-6 w-6 text-[#D4AF37]" /> : <Menu className="h-6 w-6 text-[#D4AF37]" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -93,24 +105,25 @@ export function Header() {
             <div className="flex flex-col gap-4">
               {navItems.map((item) => (
                 <Link
-                  key={item.name}
+                  key={item.href}
                   href={getHref(item.href)}
-                  className="text-sm font-mono uppercase tracking-wider text-white/80 hover:text-[#D4AF37] transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-sm font-mono uppercase tracking-wider text-white/80 hover:text-[#D4AF37] transition-colors px-4"
+                  onClick={(e) => handleNavClick(e, item.href)}
                 >
                   {item.name}
                 </Link>
               ))}
-              <Button
-                className="mt-2 bg-[#D4AF37] text-black hover:bg-[#b0912d]"
-                onClick={() => {
-                  const message = "Bonjour, je souhaite réserver un véhicule."
-                  const whatsappUrl = `https://wa.me/212665123330?text=${encodeURIComponent(message)}`
-                  window.open(whatsappUrl, "_blank")
-                }}
-              >
-                Réserver
-              </Button>
+              <div className="px-4">
+                <Button
+                  className="w-full mt-2 bg-[#D4AF37] text-black hover:bg-[#b0912d]"
+                  onClick={() => {
+                    const whatsappUrl = `https://wa.me/212665123330`
+                    window.open(whatsappUrl, "_blank")
+                  }}
+                >
+                  {tCommon('bookNow')}
+                </Button>
+              </div>
             </div>
           </nav>
         )}

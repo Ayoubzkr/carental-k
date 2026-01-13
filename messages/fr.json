@@ -1,0 +1,308 @@
+{
+    "metadata": {
+        "title": "K-Rim Car | Location de Voitures de Luxe & Services de Lavage Automobile Professionnels",
+        "description": "Découvrez la location de voitures de luxe et les services de lavage automobile professionnels avec K-Rim Car. Véhicules premium, service exceptionnel et qualité inégalée.",
+        "keywords": "location voiture luxe, lavage auto premium, services location voiture, lavage automobile professionnel, voiture de luxe Maroc, K-Rim Car Tanger"
+    },
+    "nav": {
+        "home": "Accueil",
+        "vehicles": "Véhicules",
+        "services": "Services",
+        "about": "À propos",
+        "contact": "Contact",
+        "pricing": "Tarifs"
+    },
+    "hero": {
+        "badge": "Services Automobiles de Prestige",
+        "cta": "Réserver Maintenant",
+        "ctaSecondary": "Voir la Flotte",
+        "slides": {
+            "0": {
+                "title": "L'Expérience",
+                "highlight": "du Luxe",
+                "subtitle": "",
+                "description": "Location de voitures haut de gamme et services de lavage premium pour une expérience vraiment exclusive."
+            },
+            "1": {
+                "title": "Ressentez",
+                "highlight": "l'Excellence",
+                "subtitle": "",
+                "description": "Découvrez notre collection de véhicules haut de gamme accompagnés d’un service entièrement personnalisé."
+            },
+            "2": {
+                "title": "Votre",
+                "highlight": "Destination",
+                "subtitle": "Premium",
+                "description": "Élégance, confort et performance réunis pour une expérience inoubliable."
+            }
+        },
+        "features": {
+            "reliable": {
+                "title": "Service Fiable",
+                "desc": "Sécurité et transparence garanties"
+            },
+            "quality": {
+                "title": "Qualité Supérieure",
+                "desc": "Standards haut de gamme"
+            },
+            "satisfaction": {
+                "title": "Satisfaction 5★",
+                "desc": "Recommandé par nos clients"
+            }
+        }
+    },
+    "about": {
+        "badge": "À Propos de K-Rim Car",
+        "title": "L’Art du Luxe, Maîtrisé à la Perfection",
+        "description1": "K-Rim Car est votre référence dans la location de voitures haut de gamme et les services de detailing professionnel. Nous mettons à votre disposition une expertise affirmée et une véritable culture de l’excellence pour offrir des prestations d’un niveau supérieur.",
+        "description2": "Notre engagement pour la qualité, le souci du détail et l’écoute du client a fait de K-Rim Car un partenaire de confiance pour une clientèle exigeante, à la recherche d’un service réellement irréprochable.",
+        "features": {
+            "exp": "Plus de 10 ans d’expertise au service du luxe",
+            "fleet": "Flotte haut de gamme soigneusement sélectionnée",
+            "wash": "Services de lavage et detailing premium",
+            "service": "Excellence du service et satisfaction client",
+            "support": "Support et assistance dédiés 24/7"
+        }
+    },
+    "services": {
+        "badge": "Nos Services",
+        "title": "Des Services d’Excellence Pensés Pour Vous",
+        "subtitle": "Découvrez l’alliance parfaite du luxe, du professionnalisme et d’un service haut de gamme.",
+        "rental": {
+            "title": "Location de Voitures de Luxe",
+            "description": "Explorez notre flotte haut de gamme soigneusement sélectionnée. Idéale pour les déplacements professionnels, les événements prestigieux ou simplement pour profiter du plaisir de conduire un véhicule d’exception.",
+            "features": {
+                "fleet": "Flotte de véhicules premium soigneusement sélectionnés",
+                "flex": "Options de location flexibles (court & long terme)",
+                "insurance": "Assurance complète incluse",
+                "delivery": "Service de livraison et récupération offertes"
+            }
+        },
+        "wash": {
+            "title": "Lavage Automobile Professionnel",
+            "description": "Un service de lavage et de detailing professionnel conçu pour préserver l’éclat, la valeur et l’élégance de votre véhicule, avec des produits haut de gamme et des techniques expertes.",
+            "features": {
+                "detailing": "Detailing intérieur & extérieur haut de gamme",
+                "protection": "Traitements avancés de protection carrosserie",
+                "products": "Produits professionnels de qualité supérieure",
+                "experts": "Service rapide et réalisé par des experts"
+            }
+        },
+        "trust": {
+            "secure": {
+                "value": "100%",
+                "label": "Sécurisé"
+            },
+            "support": {
+                "value": "24/7",
+                "label": "Support Dédié"
+            },
+            "vehicles": {
+                "value": "50+",
+                "label": "Véhicules Premium"
+            },
+            "clients": {
+                "value": "5000+",
+                "label": "Clients Satisfaits"
+            }
+        }
+    },
+    "catalog": {
+        "badge": "Notre Flotte",
+        "title1": "Collection Exclusive",
+        "title2": "de Véhicules de Luxe",
+        "subtitle": "Choisissez parmi notre sélection de véhicules premium, chacun maintenu aux plus hauts standards",
+        "filters": {
+            "brand": "Marque",
+            "allBrands": "Toutes les marques",
+            "category": "Catégorie",
+            "allCategories": "Toutes catégories",
+            "transmission": "Transmission",
+            "allTransmissions": "Transmission",
+            "manual": "Manuelle",
+            "automatic": "Automatique",
+            "diesel": "Diesel",
+            "gasoline": "Essence",
+            "hybrid": "Hybride",
+            "electric": "Électrique"
+        },
+        "card": {
+            "recommended": "Recommandé",
+            "places": "places",
+            "startingFrom": "À partir de / Jour",
+            "details": "Voir détails"
+        }
+    },
+    "pricing": {
+        "badge": "Nos Tarifs Lavage",
+        "title": "Forfaits de Lavage et Detailing Haut de Gamme",
+        "subtitle": "Des prestations conçues pour sublimer et protéger votre véhicule d’exception.",
+        "popular": "CHOIX N°1",
+        "book": "Réserver Maintenant",
+        "packages": {
+            "express": {
+                "name": "Lavage Express",
+                "desc": "Nettoyage extérieur efficace, idéal pour redonner de l’éclat en quelques minutes.",
+                "features": [
+                    "Lavage extérieur manuel haute qualité",
+                    "Nettoyage des vitres extérieures",
+                    "Brillance pneus professionnelle",
+                    "Séchage rapide & sans traces"
+                ]
+            },
+            "premium": {
+                "name": "Detailing Premium",
+                "desc": "Un nettoyage complet intérieur + extérieur, réalisé avec une précision professionnelle.",
+                "features": [
+                    "Lavage extérieur complet",
+                    "Aspiration intérieure profonde",
+                    "Nettoyage tableau de bord & surfaces",
+                    "Vitres intérieures & extérieures",
+                    "Brillance pneus premium",
+                    "Application de cire protectrice"
+                ]
+            },
+            "luxe": {
+                "name": "Package Luxe",
+                "desc": "Le traitement de detailing le plus complet pour une finition showroom.",
+                "features": [
+                    "Tous les services du pack Premium inclus",
+                    "Traitement clay bar professionnel",
+                    "Correction légère de micro-rayures",
+                    "Protection céramique haute durabilité",
+                    "Nettoyage & soin du cuir",
+                    "Nettoyage compartiment moteur"
+                ]
+            }
+        }
+    },
+    "testimonials": {
+        "googleRating": "Basé sur 123 avis",
+        "verified": "Avis vérifiés provenant de Google Maps",
+        "title": "Nos Clients Témoignent",
+        "subtitle": "Découvrez les avis réels de nos clients au Maroc. K-Rim Car est noté 4.9/5 grâce à son service premium, ses voitures neuves et sa livraison rapide à Tanger.",
+        "cta": "Réserver maintenant via WhatsApp 📲",
+        "reviews": {
+            "0": {
+                "text": "Service impeccable, voiture très propre. Je recommande vivement K-Rim Car pour leur professionnalisme."
+            },
+            "1": {
+                "text": "Une expérience de location sans stress. J'ai loué une Range Rover, elle était en parfait état. Merci à toute l'équipe."
+            },
+            "2": {
+                "text": "Meilleure agence à Casablanca. Ponctualité et service client au top. Je reviendrai sans hésiter."
+            },
+            "3": {
+                "text": "Prix très corrects pour des voitures de luxe. Le personnel est accueillant et très serviable."
+            },
+            "4": {
+                "text": "J'ai apprécié la transparence et la qualité du service. Pas de frais cachés, tout est clair dès le début."
+            }
+        }
+    },
+    "details": {
+        "back": "Retour aux véhicules",
+        "from": "À partir de",
+        "day": "/Jour",
+        "book": "Réserver maintenant",
+        "colors": "Couleurs Disponibles",
+        "specs": "Caractéristiques",
+        "comfort": "Confort",
+        "security": "Sécurité",
+        "rates": "Tarifs de location",
+        "daily": "Journalier",
+        "weekly": "Hebdomadaire",
+        "monthly": "Mensuel",
+        "allIncluded": "Tout inclus",
+        "popular": "Le plus populaire",
+        "reserve": "Réserver",
+        "notFound": "Véhicule non trouvé",
+        "backHome": "Retour à l'accueil",
+        "form": {
+            "title": "Réserver la",
+            "subtitle": "Remplissez les informations ci-dessous pour confirmer votre réservation via WhatsApp.",
+            "name": "Nom complet",
+            "startDate": "Date de début",
+            "endDate": "Date de fin",
+            "pickup": "Type de retrait",
+            "agency": "À l'agence",
+            "delivery": "Livraison",
+            "location": "Lieu de livraison",
+            "options": "Options",
+            "babySeat": "Siège bébé",
+            "insurance": "Assurance complète",
+            "total": "Prix total estimé",
+            "submit": "Confirmer via WhatsApp",
+            "disclaimer": "Vous serez redirigé vers une conversation WhatsApp avec nos équipes pour finaliser votre réservation."
+        },
+        "specLabels": {
+            "transmission": "Transmission",
+            "fuel": "Carburant",
+            "seats": "Places",
+            "power": "Puissance",
+            "consumption": "Consommation",
+            "gps": "GPS",
+            "camera": "Caméra",
+            "connectivity": "Connectivité"
+        }
+    },
+    "contact": {
+        "title": "Contactez-Nous Aujourd'hui",
+        "badge": "Contactez-Nous",
+        "subtitle": "Contactez K-Rim Car, votre agence de location de voitures premium à Tanger. Nous proposons un service rapide, fiable et disponible pour livraison à l’aéroport, gare Tanger Ville, hôtels et Malabata.",
+        "cta": "Vous avez des questions? Nous sommes là pour vous aider. Contactez-nous et discutons de la façon dont nous pouvons vous servir.",
+        "form": {
+            "title": "Envoyez-Nous un Message",
+            "name": "Votre Nom",
+            "namePh": "Entrez votre nom complet",
+            "email": "Adresse Email",
+            "emailPh": "exemple@email.com",
+            "phone": "Numéro de Téléphone",
+            "service": "Service qui Vous Intéresse",
+            "servicePh": "Sélectionnez un service",
+            "message": "Message",
+            "messagePh": "Parlez-nous de vos besoins...",
+            "rental": "Location de Voitures",
+            "wash": "Lavage Automobile",
+            "both": "Les Deux Services",
+            "submit": "Envoyer le Message",
+            "whatsapp": "Contacter sur WhatsApp"
+        },
+        "info": {
+            "title": "INFO CONTACT",
+            "address": "Route de Malabata, Tanger, Maroc",
+            "map": "Voir sur Google Maps",
+            "hours": "Lundi - Vendredi : 9h00 - 19h00",
+            "saturday": "Samedi : 10h00 - 14h00"
+        }
+    },
+    "footer": {
+        "description": "Location de voitures premium & services de lavage automobile professionnels. Excellence, luxe et transparence pour tous vos déplacements à Tanger.",
+        "cols": {
+            "services": "Services",
+            "company": "Entreprise",
+            "support": "Support"
+        },
+        "links": {
+            "rental": "Location de Voitures",
+            "wash": "Lavage Auto",
+            "fleet": "Notre Flotte",
+            "pricing": "Tarifs",
+            "about": "À Propos",
+            "testimonials": "Témoignages",
+            "contact": "Contact",
+            "careers": "Carrières",
+            "faq": "FAQ",
+            "terms": "Conditions Générales",
+            "privacy": "Politique de Confidentialité",
+            "help": "Centre d'Assistance"
+        },
+        "rights": "Tous droits réservés.",
+        "credit": "Conçu avec précision & luxe."
+    },
+    "common": {
+        "readMore": "En Savoir Plus",
+        "bookNow": "Réserver",
+        "whatsapp": "WhatsApp"
+    }
+}

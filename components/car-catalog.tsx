@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { useRouter } from "next/navigation"
+import { useRouter } from "@/navigation"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -15,6 +15,7 @@ import {
 import { Users, Fuel, Settings, RotateCcw, Car as CarIcon } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { cn } from "@/lib/utils"
+import { useTranslations } from "next-intl"
 
 // Extended Car Type
 type Car = {
@@ -598,8 +599,9 @@ const cars: Car[] = [
   },
 ]
 
-function CarCard({ car }: { car: Car }) {
+function CarCard({ car, index = 0 }: { car: Car; index?: number }) {
   const router = useRouter()
+  const t = useTranslations("catalog")
 
   const handleCardClick = () => {
     router.push(`/vehicule/${car.id}`)
@@ -607,10 +609,12 @@ function CarCard({ car }: { car: Car }) {
 
   return (
     <motion.div
+      layout
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5, delay: index * 0.05 }}
       className="h-full"
     >
       <Card
@@ -627,7 +631,7 @@ function CarCard({ car }: { car: Car }) {
           />
           {car.featured && (
             <Badge className="absolute top-4 right-4 bg-[#D4AF37] text-black hover:bg-[#b0912d] font-semibold tracking-wide border-none z-20">
-              Recommandé
+              {t("card.recommended")}
             </Badge>
           )}
         </div>
@@ -654,7 +658,7 @@ function CarCard({ car }: { car: Car }) {
 
           <div className="grid grid-cols-2 gap-y-4 gap-x-2 mb-6 text-sm text-white/70">
             <div className="flex items-center gap-2">
-              <Users className="h-4 w-4 text-[#D4AF37]" /> {car.passengers} places
+              <Users className="h-4 w-4 text-[#D4AF37]" /> {car.passengers} {t("card.places")}
             </div>
             <div className="flex items-center gap-2">
               <Settings className="h-4 w-4 text-[#D4AF37]" /> {car.transmission}
@@ -666,13 +670,13 @@ function CarCard({ car }: { car: Car }) {
 
           <div className="mt-auto pt-6 border-t border-white/10 flex items-end justify-between">
             <div>
-              <div className="text-3xl font-bold text-[#D4AF37] leading-none mb-1">{car.basePrice} <span className="text-sm font-normal text-[#D4AF37]/70">MAD</span></div>
-              <div className="text-[10px] text-white/40 uppercase font-mono">À partir de / Jour</div>
+              <div className="text-3xl font-bold text-[#D4AF37] leading-none mb-1">{car.basePrice} <span className="text-sm font-normal text-[#D4AF37]/70 dir-ltr">MAD</span></div>
+              <div className="text-[10px] text-white/40 uppercase font-mono">{t("card.startingFrom")}</div>
             </div>
             <Button
               className="bg-transparent border border-[#d4af37] text-[#d4af37] hover:bg-[#d4af37] hover:text-black transition-colors rounded-none px-6"
             >
-              Voir détails
+              {t("card.details")}
             </Button>
           </div>
         </CardContent>
@@ -682,6 +686,7 @@ function CarCard({ car }: { car: Car }) {
 }
 
 export function CarCatalog() {
+  const t = useTranslations("catalog")
   const [filters, setFilters] = useState({
     brand: "all",
     category: "all",
@@ -709,16 +714,16 @@ export function CarCatalog() {
         {/* Header */}
         <div className="text-center max-w-4xl mx-auto mb-16">
           <div className="inline-block mb-6 px-6 py-2 border border-[#D4AF37]/30 rounded-full bg-[#D4AF37]/5 backdrop-blur-sm">
-            <span className="text-sm font-mono uppercase tracking-[0.2em] text-[#D4AF37]">Notre Flotte</span>
+            <span className="text-sm font-mono uppercase tracking-[0.2em] text-[#D4AF37]">{t("badge")}</span>
           </div>
 
           <h2 className="text-5xl md:text-6xl font-playfair font-bold mb-6 text-white leading-tight">
-            Collection Exclusive <br />
-            <span className="text-[#D4AF37] italic">de Véhicules de Luxe</span>
+            {t("title1")} <br />
+            <span className="text-[#D4AF37] italic">{t("title2")}</span>
           </h2>
 
           <p className="text-xl text-white/60 text-balance font-light">
-            Choisissez parmi notre sélection de véhicules premium, chacun maintenu aux plus hauts standards
+            {t("subtitle")}
           </p>
         </div>
 
@@ -729,10 +734,10 @@ export function CarCatalog() {
             {/* Brand Select */}
             <Select onValueChange={(v) => setFilters(prev => ({ ...prev, brand: v }))}>
               <SelectTrigger className="w-[180px] bg-black/50 border-white/10 text-white focus:ring-[#D4AF37]">
-                <SelectValue placeholder="Marque" />
+                <SelectValue placeholder={t("filters.brand")} />
               </SelectTrigger>
               <SelectContent className="bg-[#111] border-white/10 text-white">
-                <SelectItem value="all">Toutes les marques</SelectItem>
+                <SelectItem value="all">{t("filters.allBrands")}</SelectItem>
                 {brands.map(brand => (
                   <SelectItem key={brand} value={brand}>{brand}</SelectItem>
                 ))}
@@ -742,10 +747,10 @@ export function CarCatalog() {
             {/* Category Select */}
             <Select onValueChange={(v) => setFilters(prev => ({ ...prev, category: v }))}>
               <SelectTrigger className="w-[180px] bg-black/50 border-white/10 text-white focus:ring-[#D4AF37]">
-                <SelectValue placeholder="Catégorie" />
+                <SelectValue placeholder={t("filters.category")} />
               </SelectTrigger>
               <SelectContent className="bg-[#111] border-white/10 text-white">
-                <SelectItem value="all">Toutes catégories</SelectItem>
+                <SelectItem value="all">{t("filters.allCategories")}</SelectItem>
                 {categories.map(cat => (
                   <SelectItem key={cat} value={cat}>{cat}</SelectItem>
                 ))}
@@ -755,12 +760,12 @@ export function CarCatalog() {
             {/* Transmission Select */}
             <Select onValueChange={(v) => setFilters(prev => ({ ...prev, transmission: v }))}>
               <SelectTrigger className="w-[180px] bg-black/50 border-white/10 text-white focus:ring-[#D4AF37]">
-                <SelectValue placeholder="Transmission" />
+                <SelectValue placeholder={t("filters.transmission")} />
               </SelectTrigger>
               <SelectContent className="bg-[#111] border-white/10 text-white">
-                <SelectItem value="all">Transmission</SelectItem>
-                <SelectItem value="Automatique">Automatique</SelectItem>
-                <SelectItem value="Manuelle">Manuelle</SelectItem>
+                <SelectItem value="all">{t("filters.allTransmissions")}</SelectItem>
+                <SelectItem value="Automatique">{t("filters.automatic")}</SelectItem>
+                <SelectItem value="Manuelle">{t("filters.manual")}</SelectItem>
               </SelectContent>
             </Select>
 
@@ -777,7 +782,7 @@ export function CarCatalog() {
                   filters.fuel === "Diesel" && "bg-[#D4AF37]/10 border-[#D4AF37] text-[#D4AF37]"
                 )}
               >
-                Diesel
+                {t("filters.diesel")}
               </Button>
               <Button
                 variant="outline"
@@ -788,7 +793,7 @@ export function CarCatalog() {
                   filters.fuel === "Essence" && "bg-[#D4AF37]/10 border-[#D4AF37] text-[#D4AF37]"
                 )}
               >
-                Essence
+                {t("filters.gasoline")}
               </Button>
               <Button
                 variant="outline"
@@ -799,44 +804,35 @@ export function CarCatalog() {
                   filters.fuel === "Hybride" && "bg-[#D4AF37]/10 border-[#D4AF37] text-[#D4AF37]"
                 )}
               >
-                Hybride
-              </Button>
-            </div>
-
-            <div className="ml-auto">
-              <Button
-                onClick={() => setFilters({ brand: "all", category: "all", fuel: "all", transmission: "all" })}
-                variant="ghost"
-                className="text-[#D4AF37] hover:bg-[#D4AF37]/10"
-              >
-                <RotateCcw className="mr-2 h-4 w-4" />
-                Réinitialiser
+                {t("filters.hybrid")}
               </Button>
             </div>
 
           </div>
         </div>
 
-        {/* Cars Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <AnimatePresence mode="popLayout">
-            {filteredCars.length > 0 ? (
-              filteredCars.map((car) => (
-                <CarCard key={car.id} car={car} />
-              ))
-            ) : (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="col-span-full py-20 text-center"
-              >
-                <CarIcon className="h-16 w-16 text-white/10 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-white mb-2">Aucun véhicule trouvé</h3>
-                <p className="text-white/50">Essayez de modifier vos filtres pour voir plus de rèsultats.</p>
-              </motion.div>
-            )}
+        {/* Car Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <AnimatePresence>
+            {filteredCars.map((car, index) => (
+              <CarCard key={car.id} car={car} index={index} />
+            ))}
           </AnimatePresence>
         </div>
+
+        {filteredCars.length === 0 && (
+          <div className="text-center py-24">
+            <p className="text-white/40 text-lg">Aucun véhicule ne correspond à vos critères.</p>
+            <Button
+              variant="link"
+              className="text-[#D4AF37] mt-4"
+              onClick={() => setFilters({ brand: "all", category: "all", fuel: "all", transmission: "all" })}
+            >
+              Réinitialiser les filtres
+            </Button>
+          </div>
+        )}
+
       </div>
     </section>
   )

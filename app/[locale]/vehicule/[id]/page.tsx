@@ -4,11 +4,15 @@ import { CarDetailsClient } from "@/components/car-details-client"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { ArrowLeft } from "lucide-react"
-import Link from "next/link"
+import { Link } from "@/navigation"
 import { Button } from "@/components/ui/button"
 import { Metadata } from "next"
+import { getTranslations } from "next-intl/server"
 
 // 1. Generate Static Params for SSG/ISR
+// Next-intl: we need to generate params for all locales usually, but for generateStaticParams in [locale],
+// we should only return id. The locale is handled by upstream [locale] layout.
+// However, since [id] is inside [locale], we iterate over cars.
 export async function generateStaticParams() {
   return cars.map((car) => ({
     id: car.id.toString(),
@@ -19,20 +23,21 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params
 }: {
-  params: Promise<{ id: string }>
+  params: Promise<{ id: string, locale: string }>
 }): Promise<Metadata> {
-  const { id } = await params
+  const { id, locale } = await params
+  const t = await getTranslations({ locale, namespace: "details" })
   const carId = parseInt(id)
   const car = cars.find((c) => c.id === carId)
 
   if (!car) {
     return {
-      title: "Véhicule non trouvé - K-Rim Car",
+      title: `${t("notFound")} - K-Rim Car`,
     }
   }
 
-  const title = `Location ${car.name} à Tanger - K-Rim Car | À partir de ${car.basePrice} MAD/j`
-  const description = `Louez la ${car.name} (${car.year}) à Tanger. ${car.category}, ${car.transmission}, ${car.fuel}. Idéale pour vos déplacements professionnels ou vacances au Maroc.`
+  const title = `${car.name} - K-Rim Car | ${car.basePrice} MAD${t("day")}`
+  const description = `${car.name} (${car.year}). ${car.transmission}, ${car.fuel}.`
   const imageUrl = car.colors[0]?.image || "/placeholder.svg"
 
   return {
@@ -63,9 +68,12 @@ export async function generateMetadata({
 export default async function VehiculeDetailsPage({
   params
 }: {
-  params: Promise<{ id: string }>
+  params: Promise<{ id: string, locale: string }>
 }) {
-  const { id } = await params
+  const { id, locale } = await params
+  // Use getTranslations for server-side text
+  const t = await getTranslations({ locale, namespace: "details" })
+
   const carId = parseInt(id)
   const car = cars.find((c) => c.id === carId)
 
@@ -74,11 +82,11 @@ export default async function VehiculeDetailsPage({
       <main className="min-h-screen bg-black text-white">
         <Header />
         <div className="container mx-auto px-4 py-24 text-center">
-          <h1 className="text-4xl font-bold mb-4">Véhicule non trouvé</h1>
+          <h1 className="text-4xl font-bold mb-4">{t("notFound")}</h1>
           <Link href="/">
             <Button className="bg-[#D4AF37] text-black hover:bg-[#b0912d]">
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Retour à l'accueil
+              {t("backHome")}
             </Button>
           </Link>
         </div>
@@ -96,15 +104,15 @@ export default async function VehiculeDetailsPage({
       car.colors[0]?.image,
       ...car.colors.map(c => c.image)
     ].filter(Boolean),
-    "description": car.description,
+    "description": car.shortDescription || car.category, // Fallback
     "sku": `CAR-${car.id}`,
     "brand": {
       "@type": "Brand",
-      "name": car.name.split(" ")[0]
+      "name": car.brand
     },
     "offers": {
       "@type": "Offer",
-      "url": `https://k-rim-car.com/vehicule/${car.id}`,
+      "url": `https://k-rim-car.com/${locale}/vehicule/${car.id}`, // Proper localized URL
       "priceCurrency": "MAD",
       "price": car.basePrice,
       "priceValidUntil": "2025-12-31",

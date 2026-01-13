@@ -5,46 +5,55 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { useTranslations } from "next-intl"
 
-const testimonials = [
+const testimonialsData = [
   {
     id: 1,
     name: "Hicham El Alaoui",
     rating: 5,
-    text: "Service impeccable, voiture très propre. Je recommande vivement K-Rim Car pour leur professionnalisme.",
+    dateKey: "2j", // We'll keep dynamic date handling simple or hardcoded for now
     date: "Il y a 2 jours"
   },
   {
     id: 2,
     name: "Sofia Benjelloun",
     rating: 5,
-    text: "Une expérience de location sans stress. J'ai loué une Range Rover, elle était en parfait état. Merci à toute l'équipe.",
+    dateKey: "1w",
     date: "Il y a 1 semaine"
   },
   {
     id: 3,
     name: "Omar Berrada",
     rating: 5,
-    text: "Meilleure agence à Casablanca. Ponctualité et service client au top. Je reviendrai sans hésiter.",
+    dateKey: "2w",
     date: "Il y a 2 semaines"
   },
   {
     id: 4,
     name: "Leila Chraibi",
     rating: 5,
-    text: "Prix très corrects pour des voitures de luxe. Le personnel est accueillant et très serviable.",
+    dateKey: "3w",
     date: "Il y a 3 semaines"
   },
   {
     id: 5,
     name: "Yassine Amrani",
     rating: 5,
-    text: "J'ai apprécié la transparence et la qualité du service. Pas de frais cachés, tout est clair dès le début.",
+    dateKey: "1m",
     date: "Il y a 1 mois"
   }
 ]
 
 export function Testimonials() {
+  const t = useTranslations("testimonials")
+
+  // Reconstruct the array with translated text
+  const testimonials = testimonialsData.map((item, index) => ({
+    ...item,
+    text: t(`reviews.${index}.text`)
+  }))
+
   const [currentIndex, setCurrentIndex] = useState(0)
   const [itemsPerPage, setItemsPerPage] = useState(3)
 
@@ -101,37 +110,6 @@ export function Testimonials() {
 
   return (
     <section id="testimonials" className="py-24 bg-[#050505] overflow-hidden">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            name: "K-Rim Car",
-            image: "/logo.png",
-            address: {
-              "@type": "PostalAddress",
-              addressLocality: "Tanger",
-              addressCountry: "MA"
-            },
-            telephone: "+212665123330",
-            aggregateRating: {
-              "@type": "AggregateRating",
-              ratingValue: "4.9",
-              reviewCount: 123
-            },
-            review: testimonials.map((t) => ({
-              "@type": "Review",
-              author: t.name,
-              reviewBody: t.text,
-              reviewRating: {
-                "@type": "Rating",
-                ratingValue: t.rating
-              }
-            }))
-          }),
-        }}
-      />
       <div className="container mx-auto px-4">
 
         {/* Header with Google Rating */}
@@ -145,21 +123,20 @@ export function Testimonials() {
               ))}
             </div>
             <span className="text-white/60 text-sm ml-2 border-l border-white/20 pl-3">
-              Basé sur 123 avis
+              {t("googleRating")}
             </span>
           </div>
 
           <p className="text-white/40 text-xs mt-2 mb-8">
-            Avis vérifiés provenant de Google Maps
+            {t("verified")}
           </p>
 
           <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-6 text-white text-balance">
-            Nos Clients Témoignent
+            {t("title")}
           </h2>
 
           <p className="text-white/50 max-w-2xl mx-auto mt-4">
-            Découvrez les avis réels de nos clients au Maroc. K-Rim Car est noté 4.9/5 grâce à son service premium,
-            ses voitures neuves et sa livraison rapide à Tanger.
+            {t("subtitle")}
           </p>
         </div>
 
@@ -167,13 +144,13 @@ export function Testimonials() {
         <div className="relative max-w-7xl mx-auto">
           {/* Navigation Buttons */}
           <div className="absolute top-1/2 -translate-y-1/2 -left-4 lg:-left-12 z-20">
-            <Button variant="ghost" size="icon" onClick={prevSlide} className="text-[#D4AF37] hover:bg-[#D4AF37]/10 rounded-full h-12 w-12">
-              <ChevronLeft className="h-8 w-8" />
+            <Button variant="ghost" size="icon" onClick={prevSlide} className="text-[#D4AF37] hover:bg-[#D4AF37]/10 rounded-full h-12 w-12 dir-ltr">
+              <ChevronLeft className="h-8 w-8 rtl:rotate-180" />
             </Button>
           </div>
           <div className="absolute top-1/2 -translate-y-1/2 -right-4 lg:-right-12 z-20">
-            <Button variant="ghost" size="icon" onClick={nextSlide} className="text-[#D4AF37] hover:bg-[#D4AF37]/10 rounded-full h-12 w-12">
-              <ChevronRight className="h-8 w-8" />
+            <Button variant="ghost" size="icon" onClick={nextSlide} className="text-[#D4AF37] hover:bg-[#D4AF37]/10 rounded-full h-12 w-12 dir-ltr">
+              <ChevronRight className="h-8 w-8 rtl:rotate-180" />
             </Button>
           </div>
 
@@ -226,7 +203,7 @@ export function Testimonials() {
             target="_blank"
             className="inline-block bg-[#D4AF37] text-black px-8 py-4 rounded-full font-semibold hover:bg-[#b0912d] transition-all"
           >
-            Réserver maintenant via WhatsApp 📲
+            {t("cta")}
           </a>
         </div>
 
